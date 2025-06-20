@@ -1,3 +1,5 @@
+package com.kodilla;
+
 public class Loops {
     public static void main(String[] args) {
 
@@ -9,10 +11,9 @@ public class Loops {
             System.out.println(a);
             a++;
         }
-
         String[] names = new String[]{"Zygfryd", "Gwidon", "Florentyna"};
 
-        for (int i = 0; i < names.length; i++) {
+        for(int i = 0; i < names.length; i++) {
             System.out.println(names[i]);
         }
 
@@ -29,7 +30,7 @@ public class Loops {
         System.out.println(sum);
     }
 
-    public static int sumNumbers(int[] numbers) {
+    private static int sumNumbers(int[] numbers) {
         int result = 0;
         for (int i = 0; i < numbers.length; i++) {
             result = result + numbers[i];
