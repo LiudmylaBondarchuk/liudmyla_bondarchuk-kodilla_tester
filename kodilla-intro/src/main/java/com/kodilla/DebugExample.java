@@ -21,3 +21,19 @@ public class DebugExample {
             System.out.println(result);
     }
 }
+
+/*public class DebugExample {
+    public static void main(String[] args) {
+        int firstNumber = 76;
+        int secondNumber = 20;
+
+        if (firstNumber > secondNumber) {
+            int result = firstNumber + secondNumber;
+            System.out.println(result);
+        } else if (firstNumber < secondNumber) {
+            int result = firstNumber - secondNumber;
+            System.out.println(result);
+        }
+    }
+} */
+
