@@ -12,17 +12,18 @@ public class Application {
         };
 
         int totalAge = 0;
-        for (User user : users ) {
-            totalAge += user.getAge();
-            }
+        for (int i = 0; i < users.length; i++) {
+            totalAge += users[i].getAge();
+        }
 
         double averageAge = (double) totalAge / users.length;
 
         System.out.println("Users younger than the average age (" + averageAge + "):");
-        for (User user : users) {
-            if (user.getAge() < averageAge) {
-                System.out.println(user.getName());
+        for (int i = 0; i < users.length; i++) {
+            if (users[i].getAge() < averageAge) {
+                System.out.println(users[i].getName());
             }
+        }
         }
 
         RandomNumbers randomNumbers = new RandomNumbers();
