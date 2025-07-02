@@ -2,7 +2,7 @@ package com.kodilla;
 
 public class Application {
     public static void main(String[] args) {
-        User [] users = {
+        User[] users = {
                 new User("Anna", 20),
                 new User("Betty", 33),
                 new User("Carl", 58),
@@ -10,6 +10,7 @@ public class Application {
                 new User("Eva", 18),
                 new User("Frankie", 45)
         };
+
 
         int totalAge = 0;
         for (int i = 0; i < users.length; i++) {
@@ -24,13 +25,11 @@ public class Application {
                 System.out.println(users[i].getName());
             }
         }
-        }
 
         RandomNumbers randomNumbers = new RandomNumbers();
-        int [] minMax = randomNumbers.generateNumbers();
+        randomNumbers.generate();
 
-        System.out.println("\nRandom number generation task:");
-        System.out.println("Smallest number: " + minMax[0]);
-        System.out.println("Largest number: " + minMax[1]);
-        }
+        System.out.println("Smallest number: " + randomNumbers.getMin());
+        System.out.println("Largest number: " + randomNumbers.getMax());
     }
+}
