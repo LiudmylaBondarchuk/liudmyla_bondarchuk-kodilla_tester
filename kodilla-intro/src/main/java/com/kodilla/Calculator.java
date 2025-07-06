@@ -4,7 +4,7 @@ public class Calculator {
     static final double PI = 3.1415927;
     static int counter = 0;
 
-    public  Calculator(){
+    public Calculator() {
         counter++;
     }
 
@@ -21,7 +21,6 @@ public class Calculator {
     }
 
     public double circlePerimeter(double r) {
-        return 2 * PI *r;
+        return 2 * PI * r;
     }
 }
-

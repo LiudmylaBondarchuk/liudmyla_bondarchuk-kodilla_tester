@@ -9,6 +9,6 @@ public class CalcApplication {
         System.out.println("The value of a pi constant is equal to " + p);
 
         Calculator calculator2 = new Calculator();
-        System.out.println(calculator2.counter);
-        }
+        System.out.println("Number of Calculator instances created: " + Calculator.counter);
+    }
 }

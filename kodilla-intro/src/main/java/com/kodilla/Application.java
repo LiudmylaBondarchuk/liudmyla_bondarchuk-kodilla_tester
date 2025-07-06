@@ -13,14 +13,14 @@ public class Application {
 
 
         int totalAge = 0;
-        for (int i = 0; i < users.length; i++) {
+        for(int i = 0; i < users.length; i++) {
             totalAge += users[i].getAge();
         }
 
         double averageAge = (double) totalAge / users.length;
 
         System.out.println("Users younger than the average age (" + averageAge + "):");
-        for (int i = 0; i < users.length; i++) {
+        for(int i = 0; i < users.length; i++) {
             if (users[i].getAge() < averageAge) {
                 System.out.println(users[i].getName());
             }

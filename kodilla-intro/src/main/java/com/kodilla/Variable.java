@@ -1,3 +1,5 @@
+package com.kodilla;
+
 public class Variable {
     public static void main(String[] args) {
         String myName = "Liudmyla";
