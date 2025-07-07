@@ -1,5 +1,4 @@
 package com.kodilla;
-
 public class Grades {
     private int []  grades;
     private int size;

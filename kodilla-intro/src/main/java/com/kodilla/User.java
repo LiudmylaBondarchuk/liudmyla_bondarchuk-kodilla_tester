@@ -1,5 +1,4 @@
 package com.kodilla;
-
 public class User {
     String name;
     int age;
@@ -9,11 +8,13 @@ public class User {
         this.age = age;
     }
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public int getAge() {
+    public int getAge()
+    {
         return age;
     }
 }

@@ -1,5 +1,4 @@
 package com.kodilla;
-
 public class UserStatisticsApp {
     String name;
     double age;
@@ -10,13 +9,16 @@ public class UserStatisticsApp {
         this.age = age;
         this.height = height;
     }
-    public String getName (){
+
+    public String getName () {
         return name;
+
     }
-    public  double getAge(){
+
+    public  double getAge() {
         return age;
     }
-    public double getHeight(){
+    public double getHeight() {
         return height;
     }
 

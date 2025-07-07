@@ -1,5 +1,4 @@
 package com.kodilla;
-
 public class Book {
     private String author;
     private String title;
@@ -10,14 +9,17 @@ public class Book {
     }
 
     public static  Book of (String author,String title){
+
         return new Book(author, title);
     }
 
     public String getAuthor(){
+
         return author;
     }
 
     public String getTitle(){
+
         return title;
     }
 }

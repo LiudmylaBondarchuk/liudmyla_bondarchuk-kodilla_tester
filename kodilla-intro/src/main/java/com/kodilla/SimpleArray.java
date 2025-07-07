@@ -1,5 +1,4 @@
 package com.kodilla;
-
 public class SimpleArray {
     public static void main(String[] args) {
 

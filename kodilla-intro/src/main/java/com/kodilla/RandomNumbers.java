@@ -21,11 +21,15 @@ public class RandomNumbers {
             }
         }
     }
-        public int getMin(){
+        public int getMin()
+        {
                 return min;
+
             }
-        public int getMax(){
+        public int getMax()
+        {
                 return max;
+
             }
         }
 
