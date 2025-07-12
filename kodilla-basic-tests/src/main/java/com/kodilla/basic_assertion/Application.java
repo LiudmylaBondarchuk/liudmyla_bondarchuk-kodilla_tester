@@ -13,15 +13,15 @@ public class Application {
             System.out.println("Metoda sum nie działa poprawnie dla liczb " + a + " i " + b);
         }
         int subtractResult = calculator.subtract(a, b);
-        boolean isSubbtractCorrect = ResultChecker.assertEquals(-3, subtractResult);
-        if (isSubbtractCorrect) {
-            System.out.println("Metoda subbtract działa poprawnie dla liczb "+ a + " i " + b);
+        boolean isSubtractCorrect = ResultChecker.assertEquals(-3, subtractResult, 0.1);
+        if (isSubtractCorrect) {
+            System.out.println("Metoda subtract działa poprawnie dla liczb "+ a + " i " + b);
         }else {
-            System.out.println("Metoda subbtrackt nie działa poprawnie dla liczb " + a + "i " + b);
+            System.out.println("Metoda subtract nie działa poprawnie dla liczb " + a + "i " + b);
         }
 
-        int squareResult = calculator.square(a);
-        boolean isSquareCorrect = ResultChecker.assertEquals(25, squareResult);
+        double squareResult = calculator.square(a);
+        boolean isSquareCorrect = ResultChecker.assertEquals(25, squareResult, 0.01);
         if (isSquareCorrect){
             System.out.println("Metoda square działa poprawnie dla liczby " + a);
         }else{
