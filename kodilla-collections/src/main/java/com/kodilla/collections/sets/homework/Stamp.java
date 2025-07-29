@@ -1,4 +1,4 @@
-package com.kodilla.sets.homework;
+package com.kodilla.collections.sets.homework;
 
 import java.util.Objects;
 
@@ -34,7 +34,7 @@ public class Stamp {
         return Double.compare(stamp.width, width) == 0 &&
                Double.compare(stamp.height, height) == 0 &&
                stamped == stamp.stamped &&
-               name.equals(stamp.name);
+                Objects.equals(name, stamp.name);
     }
 
     @Override public int hashCode() {
