@@ -9,16 +9,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class EBaySimpleSearch {
 
     public static void main(String[] args) {
-        // Konfiguracja sterownika Chrome
         System.setProperty("webdriver.chrome.driver", "C:\\Selenium-drivers\\Chrome\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
 
         try {
-            // Otwórz stronę eBay
             driver.get("https://www.ebay.com/");
             driver.manage().window().maximize();
 
-            // Znajdź pole wyszukiwania i wpisz hasło "Laptop"
             WebDriverWait wait = new WebDriverWait(driver, ofSeconds(20));
             WebElement searchBox = wait.until(
                     ExpectedConditions.presenceOfElementLocated(By.id("gh-ac"))
@@ -34,7 +31,6 @@ public class EBaySimpleSearch {
 
 
         } finally {
-            // Zamknij przeglądarkę
             driver.quit();
         }
     }
