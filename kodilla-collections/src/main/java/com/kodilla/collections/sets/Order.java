@@ -8,6 +8,11 @@ public class Order {
     private double quantity;
 
     public Order(String orderNumber, String productName, double quantity) {
+        Objects.requireNonNull(orderNumber, "orderNumber must not be null");
+        Objects.requireNonNull(productName, "productName must not be null");
+        if (quantity <= 0) {
+            throw new IllegalArgumentException("quantity must be greater than 0");
+        }
         this.orderNumber = orderNumber;
         this.productName = productName;
         this.quantity = quantity;

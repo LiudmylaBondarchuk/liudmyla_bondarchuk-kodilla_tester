@@ -7,6 +7,8 @@ public class Student {
     private String lastname;
 
     public Student(String firstname, String lastname) {
+        Objects.requireNonNull(firstname, "firstname must not be null");
+        Objects.requireNonNull(lastname, "lastname must not be null");
         this.firstname = firstname;
         this.lastname = lastname;
     }

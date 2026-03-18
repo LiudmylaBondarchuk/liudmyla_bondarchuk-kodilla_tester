@@ -9,6 +9,7 @@ public class User {
     private final String group;
 
     public User(String username, int age, int numberOfPost, String group) {
+        Objects.requireNonNull(username, "username must not be null");
         this.username = username;
         this.age = age;
         this.numberOfPost = numberOfPost;
