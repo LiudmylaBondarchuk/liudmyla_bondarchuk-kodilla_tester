@@ -1,16 +1,16 @@
 plugins {
-    id 'org.springframework.boot' version '3.2.2'
-    id 'io.spring.dependency-management' version '1.1.4'
+    alias(libs.plugins.spring.boot)
+    alias(libs.plugins.spring.dependency.management)
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation libs.spring.boot.starter.web
+    implementation libs.spring.boot.starter.validation
 
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'io.rest-assured:spring-mock-mvc:5.4.0'
-    testImplementation 'io.rest-assured:rest-assured:5.4.0'
-    testImplementation 'org.assertj:assertj-core'
+    testImplementation libs.spring.boot.starter.test
+    testImplementation libs.rest.assured.spring.mock.mvc
+    testImplementation libs.rest.assured
+    testImplementation libs.assertj.core
 }
 
 test {

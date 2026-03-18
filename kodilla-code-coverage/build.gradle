@@ -1,0 +1,52 @@
+plugins {
+    alias(libs.plugins.spring.boot)
+    alias(libs.plugins.spring.dependency.management)
+    alias(libs.plugins.spotbugs)
+    id 'checkstyle'
+}
+
+dependencies {
+    implementation libs.spring.boot.starter.data.jpa
+    implementation libs.spring.boot.starter.jdbc
+    implementation libs.spring.boot.starter.validation
+    runtimeOnly libs.mysql.connector
+    testImplementation libs.spring.boot.starter.test
+    testImplementation libs.testcontainers.mysql
+    testImplementation libs.testcontainers.junit
+}
+
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            element = 'METHOD'
+            limit {
+                counter = 'LINE'
+                value = 'COVEREDRATIO'
+                minimum = 0.7
+            }
+            limit {
+                counter = 'BRANCH'
+                value = 'COVEREDRATIO'
+                minimum = 0.7
+            }
+            includes = ['com.kodilla.jacoco.*']
+        }
+    }
+}
+
+checkstyle {
+    toolVersion "8.30"
+    configFile = file("checkstyle.xml")
+}
+
+spotbugs {
+    ignoreFailures = true
+}
+
+spotbugsMain {
+    reports { html { required = true } }
+}
+
+spotbugsTest {
+    reports { html { required = true } }
+}

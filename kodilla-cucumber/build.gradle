@@ -1,0 +1,12 @@
+dependencies {
+    testImplementation libs.junit.platform.suite
+    testImplementation libs.cucumber.java
+    testImplementation libs.cucumber.junit.platform
+}
+
+tasks.register('cucumber', Test) {
+    useJUnitPlatform()
+    testLogging {
+        events("passed", "skipped", "failed")
+    }
+}
