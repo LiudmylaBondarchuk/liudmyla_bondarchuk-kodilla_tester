@@ -5,15 +5,26 @@ plugins {
 group = 'com.kodilla'
 version = '1.0-SNAPSHOT'
 
-repositories {
-    mavenCentral()
-}
+subprojects {
+    apply plugin: 'java'
 
-dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-}
+    java {
+        sourceCompatibility = '17'
+    }
 
-test {
-    useJUnitPlatform()
+    group = 'com.kodilla'
+    version = '1.0-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        testImplementation platform('org.junit:junit-bom:5.10.0')
+        testImplementation 'org.junit.jupiter:junit-jupiter'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
 }
