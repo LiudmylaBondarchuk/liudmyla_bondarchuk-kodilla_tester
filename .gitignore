@@ -10,3 +10,7 @@
 *.ipr
 *.class
 /out/
+
+### Local config ###
+.claude/
+CLAUDE.md
