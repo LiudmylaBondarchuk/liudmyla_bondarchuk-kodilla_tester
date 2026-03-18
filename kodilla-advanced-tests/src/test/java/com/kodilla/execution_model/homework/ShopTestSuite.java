@@ -6,7 +6,8 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ShopTestSuite {
+@DisplayName("Shop Tests")
+class ShopTestSuite {
 
     Shop shop = new Shop();
 

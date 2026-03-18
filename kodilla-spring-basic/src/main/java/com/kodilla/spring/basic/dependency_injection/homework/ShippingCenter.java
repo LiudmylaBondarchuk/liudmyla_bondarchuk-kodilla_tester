@@ -1,8 +1,12 @@
 package com.kodilla.spring.basic.dependency_injection.homework;
+
+import org.springframework.stereotype.Component;
+
+@Component
 public class ShippingCenter {
 
-    private DeliveryServiceInterface deliveryService;
-    private NotificationServiceInterface notificationService;
+    private final DeliveryServiceInterface deliveryService;
+    private final NotificationServiceInterface notificationService;
 
     public ShippingCenter(DeliveryServiceInterface deliveryService,
                           NotificationServiceInterface notificationService) {

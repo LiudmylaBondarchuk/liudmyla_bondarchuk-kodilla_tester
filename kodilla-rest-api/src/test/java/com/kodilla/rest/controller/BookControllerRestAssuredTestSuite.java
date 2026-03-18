@@ -14,15 +14,14 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
 
 import static io.restassured.module.mockmvc.RestAssuredMockMvc.given;
 import static io.restassured.module.mockmvc.RestAssuredMockMvc.when;
 
 @ExtendWith(MockitoExtension.class)
-class BookControllerRestAssuredTest {
+class BookControllerRestAssuredTestSuite {
 
     @Mock
     private BookService bookService;
@@ -67,26 +66,34 @@ class BookControllerRestAssuredTest {
                 .when()
                 .post("/books")
                 .then()
-                .status(HttpStatus.OK)
+                .status(HttpStatus.CREATED)
                 .body("id", Matchers.equalTo(1))
                 .body("title", Matchers.equalTo("Clean Code"))
                 .body("author", Matchers.equalTo("Robert Martin"));
     }
 
     @Test
-    void shouldUpdateExternalPost() {
-        Map<String, Object> updatedPost = new HashMap<>();
-        updatedPost.put("id", 1);
-        updatedPost.put("title", "Updated title");
+    void shouldGetBookById() {
+        BookDto book = new BookDto(1L, "Hobbit", "Tolkien");
+        Mockito.when(bookService.findById(1L)).thenReturn(Optional.of(book));
 
         given()
-                .header("Content-Type", "application/json")
-                .body(updatedPost)
                 .when()
-                .put("https://jsonplaceholder.typicode.com/posts/1")
+                .get("/books/1")
                 .then()
-                .statusCode(200)
-                .body("id", Matchers.equalTo(1))
-                .body("title", Matchers.equalTo("Updated title"));
+                .status(HttpStatus.OK)
+                .body("title", Matchers.equalTo("Hobbit"))
+                .body("author", Matchers.equalTo("Tolkien"));
+    }
+
+    @Test
+    void shouldDeleteBookById() {
+        Mockito.when(bookService.removeById(1L)).thenReturn(true);
+
+        given()
+                .when()
+                .delete("/books/1")
+                .then()
+                .status(HttpStatus.NO_CONTENT);
     }
 }

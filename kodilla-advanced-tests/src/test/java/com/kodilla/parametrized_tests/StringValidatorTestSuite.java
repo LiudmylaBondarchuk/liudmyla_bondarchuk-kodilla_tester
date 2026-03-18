@@ -1,5 +1,6 @@
 package com.kodilla.parametrized_tests;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
@@ -8,7 +9,8 @@ import org.junit.jupiter.params.provider.ValueSource;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class StringValidatorTestSuite {
+@DisplayName("StringValidator Tests")
+class StringValidatorTestSuite {
 
     private StringValidator validator = new StringValidator();
 
@@ -27,7 +29,6 @@ public class StringValidatorTestSuite {
     @ParameterizedTest
     @NullAndEmptySource
     public void shouldReturnTrueIfStringIsNullOrEmpty(String text) {
-        System.out.println("|" + text + "|");
         assertTrue(validator.isBlank(text));
     }
 }

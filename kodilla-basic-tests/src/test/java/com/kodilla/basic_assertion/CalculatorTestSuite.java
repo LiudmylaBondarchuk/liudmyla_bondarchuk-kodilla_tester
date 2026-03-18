@@ -16,8 +16,8 @@ public class CalculatorTestSuite {
     @Test
     public void testSubtract(){
         Calculator calculator = new Calculator();
-        int subtractResalt = calculator.subtract(5,8 );
-        assertEquals(-3, subtractResalt );
+        int subtractResult = calculator.subtract(5, 8);
+        assertEquals(-3, subtractResult);
     }
     @Test
     public void testSquareWithPositive(){
@@ -33,6 +33,7 @@ public class CalculatorTestSuite {
         assertEquals(0.0, squareResult, 0.1);
         }
 
+    @Test
     public void testSquareWithNegative(){
         Calculator calculator = new Calculator();
         double squareResult = calculator.square(-2);

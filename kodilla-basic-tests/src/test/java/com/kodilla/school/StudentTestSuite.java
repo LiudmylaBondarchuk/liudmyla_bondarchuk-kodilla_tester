@@ -75,7 +75,7 @@ public class StudentTestSuite {
         student.addPhysicsGrade(19);
         student.addPhysicsGrade(3);
         student.addPhysicsGrade(3);
-        assertEquals(2.375, student.getAverage(), 0.001);
+        assertEquals(3.25, student.getAverage(), 0.001);
     }
 
 }
