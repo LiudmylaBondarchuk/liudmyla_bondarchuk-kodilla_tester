@@ -1,10 +1,16 @@
 package com.kodilla.rest.domain;
 
+import jakarta.validation.constraints.NotBlank;
+
 import java.util.Objects;
 
 public class BookDto {
     private Long id;
+
+    @NotBlank(message = "Title must not be blank")
     private String title;
+
+    @NotBlank(message = "Author must not be blank")
     private String author;
 
     public BookDto() { }
@@ -20,7 +26,6 @@ public class BookDto {
         this.author = author;
     }
 
-    // Getters and Setters
     public Long getId() {
         return id;
     }
@@ -48,15 +53,16 @@ public class BookDto {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof BookDto)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         BookDto that = (BookDto) o;
-        return Objects.equals(title, that.title) &&
+        return Objects.equals(id, that.id) &&
+                Objects.equals(title, that.title) &&
                 Objects.equals(author, that.author);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, author);
+        return Objects.hash(id, title, author);
     }
 
     @Override

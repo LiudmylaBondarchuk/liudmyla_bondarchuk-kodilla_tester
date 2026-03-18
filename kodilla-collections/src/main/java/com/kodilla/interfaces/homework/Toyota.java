@@ -16,7 +16,7 @@ public class Toyota implements Car{
 
     @Override
     public void decreaseSpeed() {
-        speed -= 15;
+        speed = Math.max(0, speed - 15);
 
     }
 

@@ -1,6 +1,5 @@
 package com.kodilla.arrays;
 
-import com.kodilla.arrays.ShapeUtils;
 import com.kodilla.interfaces.Circle;
 import com.kodilla.interfaces.Shape;
 import com.kodilla.interfaces.Square;
@@ -13,23 +12,34 @@ public class ShapeApplication {
 
     public static void main(String[] args) {
         Shape[] shapes = new Shape[5];
-        for (int n = 0; n < shapes.length; n++)
+        for (int n = 0; n < shapes.length; n++) {
             shapes[n] = drawShape();
-        for (Shape shape : shapes)
+        }
+        for (Shape shape : shapes) {
             ShapeUtils.displayShapeInfo(shape);
+        }
     }
 
     private static Shape drawShape() {
         int drawnShapeKind = RANDOM.nextInt(3);
         double a = getRandomSize();
-        if (drawnShapeKind == 0)
+        if (drawnShapeKind == 0) {
             return new Circle(a);
-        else if (drawnShapeKind == 1)
+        } else if (drawnShapeKind == 1) {
             return new Square(a);
-        else {
+        } else {
+            return createValidTriangle();
+        }
+    }
+
+    private static Triangle createValidTriangle() {
+        while (true) {
+            double a = getRandomSize();
             double b = getRandomSize();
             double c = getRandomSize();
-            return new Triangle(a, b, c);
+            if (a + b > c && a + c > b && b + c > a) {
+                return new Triangle(a, b, c);
+            }
         }
     }
 

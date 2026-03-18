@@ -2,18 +2,21 @@ package com.kodilla.inheritance.homework;
 
 public class OperatingSystem {
 
-    int releaseYear;
+    private final int releaseYear;
 
-    public OperatingSystem (int releaseYear){
+    public OperatingSystem(int releaseYear) {
         this.releaseYear = releaseYear;
     }
 
-    public void turnOn(){
+    public int getReleaseYear() {
+        return releaseYear;
+    }
+
+    public void turnOn() {
         System.out.println("System is turning on...");
     }
-    public void turnOff(){
+
+    public void turnOff() {
         System.out.println("System is shutting down...");
     }
-
-    }
-
+}

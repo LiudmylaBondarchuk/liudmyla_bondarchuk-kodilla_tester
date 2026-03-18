@@ -1,8 +1,10 @@
 package com.kodilla;
 import java.util.Scanner;
 public class UserDialogs {
+
+    private static final Scanner scanner = new Scanner(System.in);
+
     public static String getUsername() {
-        Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("Enter your name: ");
             String name = scanner.nextLine().trim();
@@ -14,7 +16,6 @@ public class UserDialogs {
     }
 
     public static String getUserSelection() {
-        Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("Select calculation (A-add, S-subtract, D-divide, M-multiply):");
             String calc = scanner.nextLine().trim().toUpperCase();
@@ -34,10 +35,14 @@ public class UserDialogs {
     }
 
     public static int getValue() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter number:");
-        int val = scanner.nextInt();
-        return val;
+        while (true) {
+            System.out.println("Enter number:");
+            String input = scanner.nextLine();
+            try {
+                return Integer.parseInt(input);
+            } catch (NumberFormatException e) {
+                System.out.println("Wrong data. Enter only digits. Try again.");
+            }
+        }
     }
-
 }

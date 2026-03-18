@@ -1,20 +1,39 @@
 package com.kodilla;
 
 public class Notebook {
-    int weight;
-    int price;
-    int year;
+    private static final double CHEAP_PRICE_THRESHOLD = 600;
+    private static final double GOOD_PRICE_THRESHOLD = 1000;
+    private static final double PREMIUM_PRICE_THRESHOLD = 2500;
+    private static final double LIGHT_WEIGHT_THRESHOLD = 1000;
+    private static final double MEDIUM_WEIGHT_THRESHOLD = 2000;
+    private static final int NEW_YEAR_THRESHOLD = 2023;
 
-    public Notebook(int weight, int price, int year) {
+    private final double weight;
+    private final double price;
+    private final int year;
+
+    public Notebook(double weight, double price, int year) {
         this.weight = weight;
         this.price = price;
         this.year = year;
     }
 
+    public double getWeight() {
+        return weight;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
     public void checkPrice() {
-        if (this.price < 600) {
+        if (price < CHEAP_PRICE_THRESHOLD) {
             System.out.println("This notebook is cheap.");
-        } else if (this.price >= 600 && this.price <= 1000) {
+        } else if (price <= GOOD_PRICE_THRESHOLD) {
             System.out.println("The price is good.");
         } else {
             System.out.println("This notebook is expensive.");
@@ -22,9 +41,9 @@ public class Notebook {
     }
 
     public void checkWeight() {
-        if (this.weight < 1000) {
+        if (weight < LIGHT_WEIGHT_THRESHOLD) {
             System.out.println("This notebook is light");
-        } else if (this.weight >= 1000 && this.weight <= 2000) {
+        } else if (weight <= MEDIUM_WEIGHT_THRESHOLD) {
             System.out.println("This notebook is not too heavy");
         } else {
             System.out.println("This notebook is very heavy");
@@ -32,9 +51,9 @@ public class Notebook {
     }
 
     public void assessNotebookCondition() {
-        if (this.year > 2023 && this.price > 2500) {
+        if (year > NEW_YEAR_THRESHOLD && price > PREMIUM_PRICE_THRESHOLD) {
             System.out.println("This is a new and premium notebook");
-        } else if (this.year > 2023 && this.price < 2500) {
+        } else if (year > NEW_YEAR_THRESHOLD) {
             System.out.println("This is a new but affordable notebook");
         } else {
             System.out.println("This is an older but still valuable notebook.");

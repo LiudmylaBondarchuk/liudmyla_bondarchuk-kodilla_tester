@@ -18,6 +18,7 @@ public class EnglishWord {
 
     @Override
     public boolean equals(Object o) {
+        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         EnglishWord that = (EnglishWord) o;
         return Objects.equals(word, that.word) && partOfSpeech == that.partOfSpeech;

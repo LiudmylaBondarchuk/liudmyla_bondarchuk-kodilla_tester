@@ -1,36 +1,35 @@
 package com.kodilla.school;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Grades {
-    private int[] values;
-    private int size;
+    private List<Integer> values;
 
     public Grades() {
-        this.size = 0;
-        this.values = new int[0];
+        this.values = new ArrayList<>();
     }
 
     public void add(int value) {
-        this.size++;
-        int[] newTab = new int[this.size];
-        System.arraycopy(values, 0, newTab, 0, values.length);
-        newTab[this.size - 1] = value;
-        this.values = newTab;
+        values.add(value);
     }
 
-    public int[] getValues() {
-        return values;
+    public List<Integer> getValues() {
+        return new ArrayList<>(values);
     }
 
-
+    public int getSize() {
+        return values.size();
+    }
 
     public double getAverage() {
-        if (this.values.length == 0) {
+        if (values.isEmpty()) {
             return 0;
         }
         double sum = 0;
-        for(int i = 0; i < this.values.length; i++) {
-            sum += this.values[i];
+        for (int value : values) {
+            sum += value;
         }
-        return sum/this.values.length;
+        return sum / values.size();
     }
 }

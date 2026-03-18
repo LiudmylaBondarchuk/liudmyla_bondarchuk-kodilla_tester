@@ -3,10 +3,10 @@ package com.kodilla.abstracts.homework;
 public class Application {
     public static void main(String[] args) {
     Shape circle = new Circle(8);
-    Shape rectange = new Rectangle(98, 70.8);
+    Shape rectangle = new Rectangle(98, 70.8);
     Shape triangle = new Triangle(7, 7.9, 12);
         printShapeInfo("Circle", circle);
-        printShapeInfo("Rectangle", rectange);
+        printShapeInfo("Rectangle", rectangle);
         printShapeInfo("Triangle", triangle);
 
 

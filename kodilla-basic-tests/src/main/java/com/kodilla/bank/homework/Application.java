@@ -16,8 +16,6 @@ public class Application {
         bank.addCashMachine(atm1);
         bank.addCashMachine(atm2);
 
-        bank.printCashMachinesSummary();
-
         System.out.println("----- Podsumowanie banku -----");
         printCashMachinesSummary(bank);
     }

@@ -1,14 +1,22 @@
 package com.kodilla.rest.service;
+
 import com.kodilla.rest.domain.BookDto;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Service
 public class BookService {
-    private final List<BookDto> books = new ArrayList<>();
+
+    private static final Logger logger = LoggerFactory.getLogger(BookService.class);
+
+    private final List<BookDto> books = new CopyOnWriteArrayList<>();
     private final AtomicLong idGenerator = new AtomicLong(1);
 
     public BookService() {
@@ -22,41 +30,25 @@ public class BookService {
     }
 
     public BookDto addBook(BookDto bookDto) {
-        bookDto.setId(idGenerator.getAndIncrement());
-        books.add(bookDto);
-        System.out.println("Added book: " + bookDto);
-        return bookDto;
-    }
-
-    public boolean removeBook(BookDto bookDto) {
-        boolean removed = books.remove(bookDto);
-        if (removed) {
-            System.out.println("Removed book: " + bookDto);
-        } else {
-            System.out.println("Book not found for removal: " + bookDto);
-        }
-        return removed;
+        BookDto savedBook = new BookDto(idGenerator.getAndIncrement(), bookDto.getTitle(), bookDto.getAuthor());
+        books.add(savedBook);
+        logger.info("Added book: {}", savedBook);
+        return savedBook;
     }
 
     public boolean removeById(Long id) {
         boolean removed = books.removeIf(book -> book.getId().equals(id));
         if (removed) {
-            System.out.println("Removed book with ID: " + id);
+            logger.info("Removed book with ID: {}", id);
         } else {
-            System.out.println("Book with ID not found: " + id);
+            logger.warn("Book with ID not found: {}", id);
         }
         return removed;
     }
 
-    public boolean removeByTitleAndAuthor(String title, String author) {
-        BookDto bookToRemove = new BookDto(title, author);
-        return removeBook(bookToRemove);
-    }
-
-    public BookDto findById(Long id) {
+    public Optional<BookDto> findById(Long id) {
         return books.stream()
                 .filter(book -> book.getId().equals(id))
-                .findFirst()
-                .orElse(null);
+                .findFirst();
     }
 }

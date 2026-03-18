@@ -1,45 +1,40 @@
 package com.kodilla.bank.homework;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CashMachine {
     private String name;
-    private int[] transactions;
-    private int size;
+    private List<Integer> transactions;
 
     public CashMachine(String name) {
         this.name = name;
-        this.transactions = new int[0];
-        this.size = 0;
+        this.transactions = new ArrayList<>();
     }
 
     public String getName() {
         return name;
     }
 
-    public void addTransaction(int amount){
-        if (amount == 0){
+    public void addTransaction(int amount) {
+        if (amount == 0) {
             return;
         }
-        this.size++;
-        int[] newTab = new int[this.size];
-        for (int i = 0; i < this.transactions.length; i++){
-            newTab[i] = this.transactions[i];
-        }
-        newTab[this.size - 1] = amount;
-        this.transactions = newTab;
+        transactions.add(amount);
     }
 
-    public int getBalance(){
+    public int getBalance() {
         int sum = 0;
-        for (int value : transactions){
+        for (int value : transactions) {
             sum += value;
         }
         return sum;
     }
 
-    public int getWithdrawalsCount(){
+    public int getWithdrawalsCount() {
         int count = 0;
-        for(int value : transactions){
-            if (value < 0){
+        for (int value : transactions) {
+            if (value < 0) {
                 count++;
             }
         }
@@ -65,11 +60,10 @@ public class CashMachine {
                 count++;
             }
         }
-        if(count == 0) {
+        if (count == 0) {
             return 0;
-        } else {
-            return (double) sum / count;
         }
+        return (double) sum / count;
     }
 
     public double getAverageDeposit() {
@@ -83,8 +77,7 @@ public class CashMachine {
         }
         if (count == 0) {
             return 0;
-        } else {
-            return (double) sum / count;
         }
+        return (double) sum / count;
     }
 }

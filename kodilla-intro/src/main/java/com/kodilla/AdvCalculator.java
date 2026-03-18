@@ -1,4 +1,5 @@
 package com.kodilla;
+
 public class AdvCalculator {
     public double calculate() {
         String userSelected = UserDialogs.getUserSelection();
@@ -7,9 +8,14 @@ public class AdvCalculator {
         return switch (userSelected) {
             case "ADD" -> a + b;
             case "SUB" -> a - b;
-            case "DIV" -> a / b;
+            case "DIV" -> {
+                if (b == 0) {
+                    throw new ArithmeticException("Division by zero is not allowed");
+                }
+                yield (double) a / b;
+            }
             case "MUL" -> a * b;
-            default -> 0;
+            default -> throw new IllegalArgumentException("Unknown operation: " + userSelected);
         };
     }
 }

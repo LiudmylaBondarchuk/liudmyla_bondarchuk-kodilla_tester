@@ -7,13 +7,17 @@ public class Grades {
     private List<Double> grades = new ArrayList<>();
 
     public Grades(List<Double> grades) {
-        this.grades = grades;
+        this.grades = new ArrayList<>(grades);
     }
 
     public double getAverage() {
+        if (grades.isEmpty()) {
+            return 0.0;
+        }
         double sum = 0.0;
-        for (double grade : grades)
+        for (double grade : grades) {
             sum += grade;
+        }
         return sum / grades.size();
     }
 

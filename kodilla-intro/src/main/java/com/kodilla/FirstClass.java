@@ -12,8 +12,8 @@ public class FirstClass {
     }
 
     public static void displayNotebookInfo(Notebook notebook, String label) {
-        System.out.println(label + ": weight: " + notebook.weight +
-                ", price: " + notebook.price + ", year: " + notebook.year);
+        System.out.println(label + ": weight: " + notebook.getWeight() +
+                ", price: " + notebook.getPrice() + ", year: " + notebook.getYear());
         notebook.checkWeight();
         notebook.checkPrice();
         notebook.assessNotebookCondition();

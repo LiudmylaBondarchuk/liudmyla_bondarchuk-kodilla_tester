@@ -1,22 +1,17 @@
 package com.kodilla.bank.homework;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Bank {
-    private CashMachine[] cashMachines;
-    private int size;
+    private List<CashMachine> cashMachines;
 
     public Bank() {
-        this.cashMachines = new CashMachine[0];
-        this.size = 0;
+        this.cashMachines = new ArrayList<>();
     }
 
     public void addCashMachine(CashMachine cashMachine) {
-        this.size++;
-        CashMachine[] newTab = new CashMachine[this.size];
-        for (int i = 0; i < this.cashMachines.length; i++) {
-            newTab[i] = this.cashMachines[i];
-        }
-        newTab[this.size - 1] = cashMachine;
-        this.cashMachines = newTab;
+        cashMachines.add(cashMachine);
     }
 
     public int getBalance() {
@@ -44,7 +39,7 @@ public class Bank {
     }
 
     public double getAverageWithdrawal() {
-        int sum = 0;
+        double sum = 0;
         int count = 0;
         for (CashMachine cashMachine : cashMachines) {
             sum += cashMachine.getAverageWithdrawal() * cashMachine.getWithdrawalsCount();
@@ -52,13 +47,12 @@ public class Bank {
         }
         if (count == 0) {
             return 0;
-        } else {
-            return (double) sum / count;
         }
+        return sum / count;
     }
 
     public double getAverageDeposit() {
-        int sum = 0;
+        double sum = 0;
         int count = 0;
         for (CashMachine cashMachine : cashMachines) {
             sum += cashMachine.getAverageDeposit() * cashMachine.getDepositsCount();
@@ -66,19 +60,7 @@ public class Bank {
         }
         if (count == 0) {
             return 0;
-        } else {
-            return (double) sum / count;
         }
-    }
-    public void printCashMachinesSummary() {
-        for (CashMachine cashMachine : cashMachines) {
-            System.out.println("Bankomat: " + cashMachine.getName());
-            System.out.println("Saldo: " + cashMachine.getBalance());
-            System.out.println("Liczba wpłat: " + cashMachine.getDepositsCount());
-            System.out.println("Liczba wypłat: " + cashMachine.getWithdrawalsCount());
-            System.out.println("Średnia wpłata: " + cashMachine.getAverageDeposit());
-            System.out.println("Średnia wypłata: " + cashMachine.getAverageWithdrawal());
-            System.out.println();
-        }
+        return sum / count;
     }
 }

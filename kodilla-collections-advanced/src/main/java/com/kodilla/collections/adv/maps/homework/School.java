@@ -1,14 +1,15 @@
 package com.kodilla.collections.adv.maps.homework;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class School {
-    private String name;
-    private List<Integer> studentsInClasses;
+    private final String name;
+    private final List<Integer> studentsInClasses;
 
     public School(String name, List<Integer> studentsInClasses) {
         this.name = name;
-        this.studentsInClasses = studentsInClasses;
+        this.studentsInClasses = new ArrayList<>(studentsInClasses);
     }
 
     public String getName() {

@@ -1,14 +1,22 @@
 package com.kodilla.interfaces;
 
 public class Square implements Shape {
-    private double width;
-    public Square(double width){
+    private final double width;
+
+    public Square(double width) {
+        if (width <= 0) {
+            throw new IllegalArgumentException("Width must be positive");
+        }
         this.width = width;
     }
-    public double getArea(){
+
+    @Override
+    public double getArea() {
         return width * width;
     }
-    public double getPerimeter(){
+
+    @Override
+    public double getPerimeter() {
         return 4 * width;
     }
 }

@@ -1,5 +1,8 @@
+package com.kodilla;
+
 import java.util.Scanner;
- enum Color {
+
+enum Color {
     BLACK,
     WHITE,
     PINK,
@@ -12,8 +15,9 @@ import java.util.Scanner;
 
 public class ColorApplication {
 
+    private static final Scanner scanner = new Scanner(System.in);
+
     public static Color getColor() {
-        Scanner scanner = new Scanner(System.in);
         while (true) {
             System.out.println("Select color: B-BLACK, W-WHITE, " +
                     "P-PINK, G-GREEN, R-RED, " +

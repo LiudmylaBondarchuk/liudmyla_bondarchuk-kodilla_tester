@@ -30,7 +30,7 @@ public class Principal {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Principal)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Principal that = (Principal) o;
         return Objects.equals(firstname, that.firstname) &&
                 Objects.equals(lastname, that.lastname);

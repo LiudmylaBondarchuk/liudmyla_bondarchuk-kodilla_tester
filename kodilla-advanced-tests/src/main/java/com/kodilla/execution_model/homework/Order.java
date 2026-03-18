@@ -4,9 +4,9 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class Order {
-    private double value;
-    private LocalDate date;
-    private String login;
+    private final double value;
+    private final LocalDate date;
+    private final String login;
 
     public Order(double value, LocalDate date, String login) {
         this.value = value;
@@ -28,17 +28,13 @@ public class Order {
 
     @Override
     public String toString() {
-        return "Order{" +
-                "value=" + value +
-                ", date=" + date +
-                ", login='" + login + '\'' +
-                '}';
+        return "Order{value=" + value + ", date=" + date + ", login='" + login + "'}";
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Order)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
         Order order = (Order) o;
         return Double.compare(order.value, value) == 0 &&
                 Objects.equals(date, order.date) &&

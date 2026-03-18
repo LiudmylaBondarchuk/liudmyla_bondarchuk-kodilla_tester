@@ -30,7 +30,7 @@ public class WeatherNotificationService {
     public void sendNotification(String location, Notification notification) {
         Set<Client> subscribers = locationSubscribers.get(location);
         if (subscribers != null) {
-            for (Client client : subscribers) {
+            for (Client client : new HashSet<>(subscribers)) {
                 client.receive(notification);
             }
         }
