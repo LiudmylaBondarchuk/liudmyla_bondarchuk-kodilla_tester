@@ -1,5 +1,7 @@
 package com.kodilla;
 
+import java.util.Objects;
+
 public class Notebook {
     private static final double CHEAP_PRICE_THRESHOLD = 600;
     private static final double GOOD_PRICE_THRESHOLD = 1000;
@@ -58,5 +60,25 @@ public class Notebook {
         } else {
             System.out.println("This is an older but still valuable notebook.");
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Notebook notebook = (Notebook) o;
+        return Double.compare(notebook.weight, weight) == 0 &&
+                Double.compare(notebook.price, price) == 0 &&
+                year == notebook.year;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(weight, price, year);
+    }
+
+    @Override
+    public String toString() {
+        return "Notebook{weight=" + weight + ", price=" + price + ", year=" + year + "}";
     }
 }

@@ -1,9 +1,9 @@
 package com.kodilla.abstracts.shapes;
 
 public class Person {
-    private String firstName;
-    private int age;
-    private Job job;
+    private final String firstName;
+    private final int age;
+    private final Job job;
 
     public Person(String firstName, int age, Job job){
         this.firstName = firstName;

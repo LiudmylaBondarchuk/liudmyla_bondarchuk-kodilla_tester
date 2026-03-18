@@ -1,54 +1,37 @@
 package com.kodilla.rest.domain;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
 
 import java.util.Objects;
 
 public class BookDto {
-    private Long id;
+    private final Long id;
 
     @NotBlank(message = "Title must not be blank")
-    private String title;
+    private final String title;
 
     @NotBlank(message = "Author must not be blank")
-    private String author;
+    private final String author;
 
-    public BookDto() { }
+    @JsonCreator
+    public BookDto(
+            @JsonProperty("id") Long id,
+            @JsonProperty("title") String title,
+            @JsonProperty("author") String author) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+    }
 
     public BookDto(String title, String author) {
-        this.title = title;
-        this.author = author;
+        this(null, title, author);
     }
 
-    public BookDto(Long id, String title, String author) {
-        this.id = id;
-        this.title = title;
-        this.author = author;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
+    public Long getId() { return id; }
+    public String getTitle() { return title; }
+    public String getAuthor() { return author; }
 
     @Override
     public boolean equals(Object o) {
@@ -67,10 +50,6 @@ public class BookDto {
 
     @Override
     public String toString() {
-        return "BookDto{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", author='" + author + '\'' +
-                '}';
+        return "BookDto{id=" + id + ", title='" + title + "', author='" + author + "'}";
     }
 }

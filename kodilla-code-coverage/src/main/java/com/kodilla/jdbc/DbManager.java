@@ -8,7 +8,7 @@ import java.util.Properties;
 public class DbManager {
 
     private final Connection conn;
-    private static DbManager dbManagerInstance;
+    private static volatile DbManager dbManagerInstance;
 
     private DbManager() throws SQLException {
         Properties connectionProps = new Properties();

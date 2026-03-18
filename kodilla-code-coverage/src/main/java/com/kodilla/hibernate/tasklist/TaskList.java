@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "TASKLISTS")
@@ -51,6 +52,19 @@ public class TaskList {
     )
     public List<Task> getTasks() {
         return tasks;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TaskList taskList = (TaskList) o;
+        return Objects.equals(listName, taskList.listName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(listName);
     }
 
     private void setId(int id) {

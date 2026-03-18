@@ -1,8 +1,8 @@
 package com.kodilla.abstracts.shapes;
 
 public abstract class Job {
-    private int salary;
-    private String responsibilities;
+    private final int salary;
+    private final String responsibilities;
 
     public Job (int salary, String responsibilities){
         this.salary = salary;

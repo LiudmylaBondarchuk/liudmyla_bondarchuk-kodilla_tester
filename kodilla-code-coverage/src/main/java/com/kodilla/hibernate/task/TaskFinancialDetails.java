@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
+import java.util.Objects;
 
 @Entity
 @Table(name = "TASKS_FINANCIALS")
@@ -37,6 +38,19 @@ public class TaskFinancialDetails {
     @Column(name = "PAID")
     public boolean isPaid() {
         return paid;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TaskFinancialDetails that = (TaskFinancialDetails) o;
+        return paid == that.paid && Objects.equals(price, that.price);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(price, paid);
     }
 
     private void setId(int id) {
