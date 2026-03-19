@@ -14,8 +14,8 @@ public class Bank {
         cashMachines.add(cashMachine);
     }
 
-    public int getBalance() {
-        int sum = 0;
+    public long getBalance() {
+        long sum = 0;
         for (CashMachine cashMachine : cashMachines) {
             sum += cashMachine.getBalance();
         }

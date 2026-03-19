@@ -1,18 +1,20 @@
 package wallet;
 
 public class Wallet {
-    private int balance = 0;
+    private long balance = 0;
 
-    public void deposit(int amount) {
+    public void deposit(long amount) {
         if (amount <= 0) {
-            throw new IllegalArgumentException("Deposit amount must be positive, got: " + amount);
+            throw new IllegalArgumentException(
+                    "Deposit amount must be positive, got: " + amount);
         }
         this.balance += amount;
     }
 
-    public void debit(int amount) {
+    public void debit(long amount) {
         if (amount <= 0) {
-            throw new IllegalArgumentException("Debit amount must be positive, got: " + amount);
+            throw new IllegalArgumentException(
+                    "Debit amount must be positive, got: " + amount);
         }
         if (amount > this.balance) {
             throw new InsufficientFundsException(amount, this.balance);
@@ -20,7 +22,7 @@ public class Wallet {
         this.balance -= amount;
     }
 
-    public int getBalance() {
+    public long getBalance() {
         return balance;
     }
 }

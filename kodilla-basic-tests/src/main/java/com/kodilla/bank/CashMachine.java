@@ -5,7 +5,7 @@ import java.util.List;
 
 public class CashMachine {
     private final String name;
-    private final List<Integer> transactions;
+    private final List<Long> transactions;
 
     public CashMachine(String name) {
         this.name = name;
@@ -16,16 +16,16 @@ public class CashMachine {
         return name;
     }
 
-    public void addTransaction(int amount) {
+    public void addTransaction(long amount) {
         if (amount == 0) {
             return;
         }
         transactions.add(amount);
     }
 
-    public int getBalance() {
-        int sum = 0;
-        for (int value : transactions) {
+    public long getBalance() {
+        long sum = 0;
+        for (long value : transactions) {
             sum += value;
         }
         return sum;
@@ -33,7 +33,7 @@ public class CashMachine {
 
     public int getWithdrawalsCount() {
         int count = 0;
-        for (int value : transactions) {
+        for (long value : transactions) {
             if (value < 0) {
                 count++;
             }
@@ -43,7 +43,7 @@ public class CashMachine {
 
     public int getDepositsCount() {
         int count = 0;
-        for (int value : transactions) {
+        for (long value : transactions) {
             if (value > 0) {
                 count++;
             }
@@ -52,9 +52,9 @@ public class CashMachine {
     }
 
     public double getAverageWithdrawal() {
-        int sum = 0;
+        long sum = 0;
         int count = 0;
-        for (int value : transactions) {
+        for (long value : transactions) {
             if (value < 0) {
                 sum += Math.abs(value);
                 count++;
@@ -67,9 +67,9 @@ public class CashMachine {
     }
 
     public double getAverageDeposit() {
-        int sum = 0;
+        long sum = 0;
         int count = 0;
-        for (int value : transactions) {
+        for (long value : transactions) {
             if (value > 0) {
                 sum += value;
                 count++;

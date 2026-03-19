@@ -19,10 +19,10 @@ class BankTestSuite {
         // When
         bank.addCashMachine(atm1);
         bank.addCashMachine(atm2);
-        int balance = bank.getBalance();
+        long balance = bank.getBalance();
 
         // Then
-        assertEquals(230, balance);
+        assertEquals(230L, balance);
     }
 
     @Test
@@ -76,14 +76,14 @@ class BankTestSuite {
         Bank bank = new Bank();
 
         // When
-        int balance = bank.getBalance();
+        long balance = bank.getBalance();
         int depositsCount = bank.getDepositsCount();
         int withdrawalsCount = bank.getWithdrawalsCount();
         double avgDeposit = bank.getAverageDeposit();
         double avgWithdrawal = bank.getAverageWithdrawal();
 
         // Then
-        assertEquals(0, balance);
+        assertEquals(0L, balance);
         assertEquals(0, depositsCount);
         assertEquals(0, withdrawalsCount);
         assertEquals(0, avgDeposit);
