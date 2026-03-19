@@ -1,16 +1,17 @@
 package com.kodilla.spring.basic.injection.shipping;
 
+import java.util.Objects;
+
 public class DeliveryService implements DeliveryServiceInterface {
 
     private static final double MAX_WEIGHT = 30.0;
 
     @Override
     public boolean deliverPackage(String address, double weight) {
-        if (weight > MAX_WEIGHT) {
-            System.out.println("Package too heavy");
-            return false;
+        Objects.requireNonNull(address, "address must not be null");
+        if (weight <= 0) {
+            throw new IllegalArgumentException("weight must be positive");
         }
-        System.out.println("Delivering in progress...");
-        return true;
+        return weight <= MAX_WEIGHT;
     }
 }

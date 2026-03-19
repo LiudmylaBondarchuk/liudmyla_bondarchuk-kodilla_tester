@@ -38,8 +38,8 @@ public class AllegroPage {
                     ExpectedConditions.elementToBeClickable(COOKIE_ACCEPT_BUTTON)
             );
             acceptButton.click();
-        } catch (org.openqa.selenium.TimeoutException e) {
-            // Cookie popup not present
+        } catch (org.openqa.selenium.TimeoutException ignored) {
+            // Cookie popup may not be present — this is expected
         }
     }
 

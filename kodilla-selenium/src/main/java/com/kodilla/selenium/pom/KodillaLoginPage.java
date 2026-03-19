@@ -5,11 +5,14 @@ import org.openqa.selenium.WebDriver;
 
 public class KodillaLoginPage extends AbstractPage {
 
-    private static final String PAGE_URL = "https://kodilla.com/pl/test/login";
+    private static final String PAGE_URL =
+            "https://kodilla.com/pl/test/login";
 
     private static final By EMAIL_INPUT = By.cssSelector("#email");
     private static final By PASSWORD_INPUT = By.cssSelector("#password");
-    private static final By LOGIN_BUTTON = By.cssSelector("button[type='submit']");
+    private static final By LOGIN_BUTTON =
+            By.cssSelector("button[type='submit']");
+    private static final String LOGIN_SUCCESS_TEXT = "zalogowany";
 
     public KodillaLoginPage(WebDriver driver) {
         super(driver);
@@ -27,6 +30,6 @@ public class KodillaLoginPage extends AbstractPage {
 
         String alertText = driver.switchTo().alert().getText();
         driver.switchTo().alert().dismiss();
-        return alertText.contains("zalogowany");
+        return alertText.contains(LOGIN_SUCCESS_TEXT);
     }
 }
