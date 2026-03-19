@@ -1,15 +1,20 @@
 package com.kodilla.school;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class GradesTestSuite {
+@DisplayName("School Grades test suite")
+class GradesTestSuite {
+
+    private static final double DELTA = 0.01;
 
     @Test
-    public void shouldHaveZeroLength() {
+    @DisplayName("should have zero length when empty")
+    void shouldHaveZeroLength() {
         //given
         Grades grades = new Grades();
         //when
@@ -19,7 +24,8 @@ public class GradesTestSuite {
     }
 
     @Test
-    public void shouldAddTwoElementsToArray() {
+    @DisplayName("should add two elements")
+    void shouldAddTwoElementsToArray() {
         //given
         Grades grades = new Grades();
         //when
@@ -33,7 +39,8 @@ public class GradesTestSuite {
     }
 
     @Test
-    public void shouldCalculateAverage() {
+    @DisplayName("should calculate average")
+    void shouldCalculateAverage() {
         //given
         Grades grades = new Grades();
         //when
@@ -41,6 +48,6 @@ public class GradesTestSuite {
         grades.add(2);
         grades.add(5);
         //then
-        assertEquals(3.66, grades.getAverage(), 0.01);
+        assertEquals(3.66, grades.getAverage(), DELTA);
     }
 }

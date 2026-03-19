@@ -1,43 +1,52 @@
 package com.kodilla.assertion;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CalculatorTestSuite {
+@DisplayName("Calculator test suite")
+class CalculatorTestSuite {
+
+    private static final double DELTA = 0.001;
+
     @Test
-    public void testSum(){
+    @DisplayName("should sum two numbers")
+    void testSum() {
         Calculator calculator = new Calculator();
-        int a = 5;
-        int b = 8;
-        int sumResult = calculator.sum(a, b);
-        assertEquals (13, sumResult);
+        int sumResult = calculator.sum(5, 8);
+        assertEquals(13, sumResult);
     }
+
     @Test
-    public void testSubtract(){
+    @DisplayName("should subtract two numbers")
+    void testSubtract() {
         Calculator calculator = new Calculator();
         int subtractResult = calculator.subtract(5, 8);
         assertEquals(-3, subtractResult);
     }
+
     @Test
-    public void testSquareWithPositive(){
+    @DisplayName("should square a positive number")
+    void testSquareWithPositive() {
         Calculator calculator = new Calculator();
         double squareResult = calculator.square(3);
-        assertEquals(9.0, squareResult, 0.1);
-        }
-
-    @Test
-    public void testSquareWithZero(){
-        Calculator calculator = new Calculator();
-        double squareResult = calculator.square(0);
-        assertEquals(0.0, squareResult, 0.1);
-        }
-
-    @Test
-    public void testSquareWithNegative(){
-        Calculator calculator = new Calculator();
-        double squareResult = calculator.square(-2);
-        assertEquals(4, squareResult, 0.1);
+        assertEquals(9.0, squareResult, DELTA);
     }
 
+    @Test
+    @DisplayName("should square zero")
+    void testSquareWithZero() {
+        Calculator calculator = new Calculator();
+        double squareResult = calculator.square(0);
+        assertEquals(0.0, squareResult, DELTA);
+    }
+
+    @Test
+    @DisplayName("should square a negative number")
+    void testSquareWithNegative() {
+        Calculator calculator = new Calculator();
+        double squareResult = calculator.square(-2);
+        assertEquals(4.0, squareResult, DELTA);
+    }
 }

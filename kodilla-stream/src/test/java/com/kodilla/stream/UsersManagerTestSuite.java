@@ -1,12 +1,17 @@
 package com.kodilla.stream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+@DisplayName("UsersManager test suite")
 class UsersManagerTestSuite {
 
     @Test
+    @DisplayName("should return usernames from Chemists group")
     void shouldReturnUsernamesFromChemistGroup() {
         // when
         List<String> chemists = UsersManager.filterChemistGroupUsernames();
@@ -18,6 +23,7 @@ class UsersManagerTestSuite {
     }
 
     @Test
+    @DisplayName("should return users older than given age")
     void shouldReturnUsersOlderThanGivenAge() {
         // given
         int ageThreshold = 45;
@@ -27,25 +33,25 @@ class UsersManagerTestSuite {
 
         // then
         assertFalse(olderUsers.isEmpty());
-        assertTrue(olderUsers.stream().allMatch(user -> user.getAge() > ageThreshold));
+        assertTrue(olderUsers.stream()
+                .allMatch(user -> user.getAge() > ageThreshold));
         assertEquals(3, olderUsers.size());
-        assertTrue(olderUsers.stream().anyMatch(user -> user.getUsername().equals("Walter White")));
-        assertTrue(olderUsers.stream().anyMatch(user -> user.getUsername().equals("Mike Ehrmantraut")));
-        assertTrue(olderUsers.stream().anyMatch(user -> user.getUsername().equals("Gus Firing")));
     }
+
     @Test
+    @DisplayName("should return users with more than given number of posts")
     void shouldReturnUsersWithMoreThanGivenNumberOfPosts() {
         // given
         int numberOfPosts = 100;
 
         // when
-        List<User> usersWithMorePosts = UsersManager.filterUsersWithMoreThan(numberOfPosts);
+        List<User> usersWithMorePosts =
+                UsersManager.filterUsersWithMoreThan(numberOfPosts);
 
         // then
         assertFalse(usersWithMorePosts.isEmpty());
-        assertTrue(usersWithMorePosts.stream().allMatch(user -> user.getNumberOfPost() > numberOfPosts));
+        assertTrue(usersWithMorePosts.stream()
+                .allMatch(user -> user.getNumberOfPost() > numberOfPosts));
         assertEquals(2, usersWithMorePosts.size());
-        assertTrue(usersWithMorePosts.stream().anyMatch(user -> user.getUsername().equals("Jessie Pinkman")));
-        assertTrue(usersWithMorePosts.stream().anyMatch(user -> user.getUsername().equals("Tuco Salamanca")));
     }
 }

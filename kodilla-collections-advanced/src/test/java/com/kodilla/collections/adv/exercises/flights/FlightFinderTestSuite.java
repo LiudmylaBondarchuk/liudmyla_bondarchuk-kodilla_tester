@@ -1,14 +1,17 @@
 package com.kodilla.collections.adv.exercises.flights;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class FlightFinderTestSuite {
+@DisplayName("FlightFinder test suite")
+class FlightFinderTestSuite {
 
     @Test
-    public void testFindFlightsFrom() {
+    @DisplayName("should find flights departing from Warsaw")
+    void testFindFlightsFrom() {
         // given
         FlightFinder flightFinder = new FlightFinder();
 
@@ -22,8 +25,9 @@ public class FlightFinderTestSuite {
     }
 
     @Test
-    public void testFindFlightsTo() {
-        //  given
+    @DisplayName("should find flights arriving in London")
+    void testFindFlightsTo() {
+        // given
         FlightFinder flightFinder = new FlightFinder();
 
         // when
@@ -36,7 +40,8 @@ public class FlightFinderTestSuite {
     }
 
     @Test
-    public void testFindFlightsFromNoResult() {
+    @DisplayName("should return empty list when no flights from given city")
+    void testFindFlightsFromNoResult() {
         // given
         FlightFinder flightFinder = new FlightFinder();
 
@@ -48,7 +53,8 @@ public class FlightFinderTestSuite {
     }
 
     @Test
-    public void testFindFlightsToNoResult() {
+    @DisplayName("should return empty list when no flights to given city")
+    void testFindFlightsToNoResult() {
         // given
         FlightFinder flightFinder = new FlightFinder();
 

@@ -1,5 +1,6 @@
 package com.kodilla.collections.adv.exercises.dictionary;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -7,10 +8,12 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class DictionaryTestSuite {
+@DisplayName("Dictionary test suite")
+class DictionaryTestSuite {
 
     @Test
-    public void testAddWord(){
+    @DisplayName("should add word and increase dictionary size")
+    void testAddWord() {
         //given
         Dictionary dictionary = new Dictionary();
         String polishWord = "stos";
@@ -18,11 +21,12 @@ public class DictionaryTestSuite {
         //when
         dictionary.addWord(polishWord, englishWord);
         //then
-    assertEquals(1, dictionary.size());
-
+        assertEquals(1, dictionary.size());
     }
+
     @Test
-    public void testFindEnglishWords(){
+    @DisplayName("should find all English translations for a Polish word")
+    void testFindEnglishWords() {
         //given
         Dictionary dictionary = new Dictionary();
         dictionary.addWord("stos", new EnglishWord("stack", PartOfSpeech.NOUN));
@@ -39,7 +43,8 @@ public class DictionaryTestSuite {
     }
 
     @Test
-    public void testFindEnglishWordsWithPartOfSpeech() {
+    @DisplayName("should find English translations filtered by part of speech")
+    void testFindEnglishWordsWithPartOfSpeech() {
         //given
         Dictionary dictionary = new Dictionary();
         dictionary.addWord("stos", new EnglishWord("stack", PartOfSpeech.NOUN));

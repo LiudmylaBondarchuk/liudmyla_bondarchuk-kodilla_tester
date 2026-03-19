@@ -1,47 +1,49 @@
 package com.kodilla.assertion;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class PrimeCheckerTestSuite {
+@DisplayName("PrimeChecker test suite")
+class PrimeCheckerTestSuite {
 
-    private PrimeChecker checker = new PrimeChecker();
+    private final PrimeChecker checker = new PrimeChecker();
 
     @Test
-    public void shouldReturnFalseWhenPassingNotPrimeNumber() {
-        boolean result = checker.isPrime(14);
-        assertFalse(result);
+    @DisplayName("should return false for a non-prime number")
+    void shouldReturnFalseWhenPassingNotPrimeNumber() {
+        assertFalse(checker.isPrime(14));
     }
 
     @Test
-    public void shouldReturnTrueWhenPassingPrimeNumber() {
-        boolean result = checker.isPrime(13);
-        assertTrue(result);
+    @DisplayName("should return true for a prime number")
+    void shouldReturnTrueWhenPassingPrimeNumber() {
+        assertTrue(checker.isPrime(13));
     }
 
     @Test
-    public void shouldReturnTrueWhenPassingTwo() {
-        boolean result = checker.isPrime(2);
-        assertTrue(result);
+    @DisplayName("should return true for 2")
+    void shouldReturnTrueWhenPassingTwo() {
+        assertTrue(checker.isPrime(2));
     }
 
     @Test
-    public void shouldReturnFalseWhenPassingOne() {
-        boolean result = checker.isPrime(1);
-        assertFalse(result);
+    @DisplayName("should return false for 1")
+    void shouldReturnFalseWhenPassingOne() {
+        assertFalse(checker.isPrime(1));
     }
 
     @Test
-    public void shouldReturnFalseWhenPassingZero() {
-        boolean result = checker.isPrime(0);
-        assertFalse(result);
+    @DisplayName("should return false for 0")
+    void shouldReturnFalseWhenPassingZero() {
+        assertFalse(checker.isPrime(0));
     }
 
     @Test
-    public void shouldReturnFalseWhenPassingNegativeNumber() {
-        boolean result = checker.isPrime(-6);
-        assertFalse(result);
+    @DisplayName("should return false for a negative number")
+    void shouldReturnFalseWhenPassingNegativeNumber() {
+        assertFalse(checker.isPrime(-6));
     }
 }

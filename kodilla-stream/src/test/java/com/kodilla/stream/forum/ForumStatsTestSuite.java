@@ -1,6 +1,7 @@
 package com.kodilla.stream.forum;
 
 import com.kodilla.stream.User;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -8,9 +9,11 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("ForumStats test suite")
 class ForumStatsTestSuite {
 
     @Test
+    @DisplayName("should calculate average posts for users >= 40")
     void shouldCalculateAveragePostsForUsersOlderThanOrEqual40() {
         // given
         List<User> users = Arrays.asList(
@@ -25,6 +28,7 @@ class ForumStatsTestSuite {
     }
 
     @Test
+    @DisplayName("should calculate average posts for users < 40")
     void shouldCalculateAveragePostsForUsersYoungerThan40() {
         // given
         List<User> users = Arrays.asList(
@@ -40,6 +44,7 @@ class ForumStatsTestSuite {
     }
 
     @Test
+    @DisplayName("should return 0 if no users >= 40")
     void shouldReturnZeroIfNoUsersOlderThanOrEqual40() {
         // given
         List<User> users = Arrays.asList(
@@ -53,6 +58,7 @@ class ForumStatsTestSuite {
     }
 
     @Test
+    @DisplayName("should return 0 if no users < 40")
     void shouldReturnZeroIfNoUsersYoungerThan40() {
         // given
         List<User> users = Arrays.asList(
@@ -66,12 +72,15 @@ class ForumStatsTestSuite {
     }
 
     @Test
+    @DisplayName("should return 0 for empty user list")
     void shouldReturnZeroForEmptyUserList() {
         // given
         List<User> users = List.of();
         // when
-        double resultAtLeast40 = ForumStats.averagePostsForUsersOlderThanOrEqual40(users);
-        double resultYounger40 = ForumStats.averagePostsForUsersYoungerThan40(users);
+        double resultAtLeast40 =
+                ForumStats.averagePostsForUsersOlderThanOrEqual40(users);
+        double resultYounger40 =
+                ForumStats.averagePostsForUsersYoungerThan40(users);
         // then
         assertEquals(0.0, resultAtLeast40, 0.01);
         assertEquals(0.0, resultYounger40, 0.01);
