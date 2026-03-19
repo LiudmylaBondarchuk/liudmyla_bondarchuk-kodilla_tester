@@ -39,6 +39,12 @@ checkstyle {
     configFile = file("checkstyle.xml")
 }
 
+test {
+    useJUnitPlatform {
+        excludeTags 'integration'
+    }
+}
+
 spotbugs {
     ignoreFailures = true
 }
