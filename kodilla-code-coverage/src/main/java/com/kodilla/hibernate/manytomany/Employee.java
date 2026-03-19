@@ -4,45 +4,28 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name = "EMPLOYEES")
+@Access(AccessType.FIELD)
 public class Employee {
-
-    private int id;
-    private String firstname;
-    private String lastname;
-    private List<Company> companies = new ArrayList<>();
-
-    public Employee() {
-    }
-
-    public Employee(String firstname, String lastname) {
-        this.firstname = firstname;
-        this.lastname = lastname;
-    }
 
     @Id
     @GeneratedValue
     @NotNull
     @Column(name = "EMPLOYEE_ID", unique = true)
-    public int getId() {
-        return id;
-    }
+    private int id;
 
     @NotNull
     @Column(name = "FIRSTNAME")
-    public String getFirstname() {
-        return firstname;
-    }
+    private String firstname;
 
     @NotNull
     @Column(name = "LASTNAME")
-    public String getLastname() {
-        return lastname;
-    }
+    private String lastname;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
@@ -52,8 +35,40 @@ public class Employee {
             inverseJoinColumns = {@JoinColumn(name = "COMPANY_ID",
                     referencedColumnName = "COMPANY_ID")}
     )
+    private List<Company> companies = new ArrayList<>();
+
+    public Employee() {
+    }
+
+    public Employee(String firstname, String lastname) {
+        Objects.requireNonNull(firstname, "firstname must not be null");
+        Objects.requireNonNull(lastname, "lastname must not be null");
+        this.firstname = firstname;
+        this.lastname = lastname;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
     public List<Company> getCompanies() {
-        return companies;
+        return Collections.unmodifiableList(companies);
+    }
+
+    public void addCompany(Company company) {
+        companies.add(company);
+    }
+
+    public void setCompanies(List<Company> companies) {
+        this.companies = new ArrayList<>(companies);
     }
 
     @Override
@@ -61,27 +76,12 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return Objects.equals(firstname, employee.firstname) && Objects.equals(lastname, employee.lastname);
+        return Objects.equals(firstname, employee.firstname)
+                && Objects.equals(lastname, employee.lastname);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(firstname, lastname);
-    }
-
-    private void setId(int id) {
-        this.id = id;
-    }
-
-    private void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    private void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public void setCompanies(List<Company> companies) {
-        this.companies = new ArrayList<>(companies);
     }
 }

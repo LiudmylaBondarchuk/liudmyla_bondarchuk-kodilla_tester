@@ -5,44 +5,27 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name = "TASKLISTS")
+@Access(AccessType.FIELD)
 public class TaskList {
-
-    private int id;
-    private String listName;
-    private String description;
-    private List<Task> tasks = new ArrayList<>();
-
-    public TaskList() {
-    }
-
-    public TaskList(String listName, String description) {
-        this.listName = listName;
-        this.description = description;
-    }
 
     @Id
     @GeneratedValue
     @NotNull
     @Column(name = "ID", unique = true)
-    public int getId() {
-        return id;
-    }
+    private int id;
 
     @Column(name = "LISTNAME")
     @NotNull
-    public String getListName() {
-        return listName;
-    }
+    private String listName;
 
     @Column(name = "DESCRIPTION")
-    public String getDescription() {
-        return description;
-    }
+    private String description;
 
     @OneToMany(
             targetEntity = Task.class,
@@ -50,8 +33,39 @@ public class TaskList {
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
+    private List<Task> tasks = new ArrayList<>();
+
+    public TaskList() {
+    }
+
+    public TaskList(String listName, String description) {
+        Objects.requireNonNull(listName, "listName must not be null");
+        this.listName = listName;
+        this.description = description;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getListName() {
+        return listName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
     public List<Task> getTasks() {
-        return tasks;
+        return Collections.unmodifiableList(tasks);
+    }
+
+    public void addTask(Task task) {
+        tasks.add(task);
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = new ArrayList<>(tasks);
     }
 
     @Override
@@ -65,21 +79,5 @@ public class TaskList {
     @Override
     public int hashCode() {
         return Objects.hash(listName);
-    }
-
-    private void setId(int id) {
-        this.id = id;
-    }
-
-    private void setListName(String listName) {
-        this.listName = listName;
-    }
-
-    private void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setTasks(List<Task> tasks) {
-        this.tasks = new ArrayList<>(tasks);
     }
 }

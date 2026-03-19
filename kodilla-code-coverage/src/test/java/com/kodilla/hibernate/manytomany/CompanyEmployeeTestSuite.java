@@ -5,9 +5,11 @@ import com.kodilla.hibernate.manytomany.repository.EmployeeRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.junit.jupiter.api.Tag;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
+@Tag("integration")
 class CompanyEmployeeTestSuite {
 
     @Autowired
@@ -27,17 +29,17 @@ class CompanyEmployeeTestSuite {
         Company dataMasters = new Company("Data Masters");
         Company greyMatter = new Company("Grey Matter");
 
-        softwareMachine.getEmployees().add(johnSmith);
-        dataMasters.getEmployees().add(stephanieClarkson);
-        dataMasters.getEmployees().add(lindaKovalsky);
-        greyMatter.getEmployees().add(johnSmith);
-        greyMatter.getEmployees().add(lindaKovalsky);
+        softwareMachine.addEmployee(johnSmith);
+        dataMasters.addEmployee(stephanieClarkson);
+        dataMasters.addEmployee(lindaKovalsky);
+        greyMatter.addEmployee(johnSmith);
+        greyMatter.addEmployee(lindaKovalsky);
 
-        johnSmith.getCompanies().add(softwareMachine);
-        johnSmith.getCompanies().add(greyMatter);
-        stephanieClarkson.getCompanies().add(dataMasters);
-        lindaKovalsky.getCompanies().add(dataMasters);
-        lindaKovalsky.getCompanies().add(greyMatter);
+        johnSmith.addCompany(softwareMachine);
+        johnSmith.addCompany(greyMatter);
+        stephanieClarkson.addCompany(dataMasters);
+        lindaKovalsky.addCompany(dataMasters);
+        lindaKovalsky.addCompany(greyMatter);
 
         //When
         companyRepository.save(softwareMachine);

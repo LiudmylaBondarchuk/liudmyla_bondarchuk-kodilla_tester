@@ -4,41 +4,54 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Table(name = "COMPANIES")
+@Access(AccessType.FIELD)
 public class Company {
 
+    @Id
+    @GeneratedValue
+    @NotNull
+    @Column(name = "COMPANY_ID", unique = true)
     private int id;
+
+    @NotNull
+    @Column(name = "COMPANY_NAME")
     private String name;
+
+    @ManyToMany(mappedBy = "companies")
     private List<Employee> employees = new ArrayList<>();
 
     public Company() {
     }
 
     public Company(String name) {
+        Objects.requireNonNull(name, "name must not be null");
         this.name = name;
     }
 
-    @Id
-    @GeneratedValue
-    @NotNull
-    @Column(name = "COMPANY_ID", unique = true)
     public int getId() {
         return id;
     }
 
-    @NotNull
-    @Column(name = "COMPANY_NAME")
     public String getName() {
         return name;
     }
 
-    @ManyToMany(mappedBy = "companies")
     public List<Employee> getEmployees() {
-        return employees;
+        return Collections.unmodifiableList(employees);
+    }
+
+    public void addEmployee(Employee employee) {
+        employees.add(employee);
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = new ArrayList<>(employees);
     }
 
     @Override
@@ -52,17 +65,5 @@ public class Company {
     @Override
     public int hashCode() {
         return Objects.hash(name);
-    }
-
-    private void setId(int id) {
-        this.id = id;
-    }
-
-    private void setName(String name) {
-        this.name = name;
-    }
-
-    public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
     }
 }

@@ -8,34 +8,41 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "TASKS_FINANCIALS")
+@Access(AccessType.FIELD)
 public class TaskFinancialDetails {
 
+    @Id
+    @GeneratedValue
+    @NotNull
+    @Column(name = "ID", unique = true)
     private int id;
+
+    @Column(name = "PRICE")
     private BigDecimal price;
+
+    @Column(name = "PAID")
     private boolean paid;
 
     public TaskFinancialDetails() {
     }
 
     public TaskFinancialDetails(BigDecimal price, boolean paid) {
+        Objects.requireNonNull(price, "price must not be null");
+        if (price.signum() < 0) {
+            throw new IllegalArgumentException("price must not be negative");
+        }
         this.price = price;
         this.paid = paid;
     }
 
-    @Id
-    @GeneratedValue
-    @NotNull
-    @Column(name = "ID", unique = true)
     public int getId() {
         return id;
     }
 
-    @Column(name = "PRICE")
     public BigDecimal getPrice() {
         return price;
     }
 
-    @Column(name = "PAID")
     public boolean isPaid() {
         return paid;
     }
@@ -51,17 +58,5 @@ public class TaskFinancialDetails {
     @Override
     public int hashCode() {
         return Objects.hash(price, paid);
-    }
-
-    private void setId(int id) {
-        this.id = id;
-    }
-
-    private void setPrice(BigDecimal price) {
-        this.price = price;
-    }
-
-    private void setPaid(boolean paid) {
-        this.paid = paid;
     }
 }
