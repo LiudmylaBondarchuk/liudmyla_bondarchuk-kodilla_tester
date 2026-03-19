@@ -10,6 +10,14 @@ public class User {
 
     public User(String username, int age, int numberOfPost, String group) {
         Objects.requireNonNull(username, "username must not be null");
+        Objects.requireNonNull(group, "group must not be null");
+        if (age < 0) {
+            throw new IllegalArgumentException("age must not be negative");
+        }
+        if (numberOfPost < 0) {
+            throw new IllegalArgumentException(
+                    "numberOfPost must not be negative");
+        }
         this.username = username;
         this.age = age;
         this.numberOfPost = numberOfPost;

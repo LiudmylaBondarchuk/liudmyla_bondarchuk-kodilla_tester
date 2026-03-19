@@ -7,6 +7,7 @@ public class Student {
     private final Teacher teacher;
 
     public Student(String name, Teacher teacher) {
+        java.util.Objects.requireNonNull(name, "name must not be null");
         this.name = name;
         this.teacher = teacher;
     }

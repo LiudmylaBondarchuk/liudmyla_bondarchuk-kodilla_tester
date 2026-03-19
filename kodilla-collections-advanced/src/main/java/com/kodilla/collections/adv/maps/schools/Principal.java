@@ -3,10 +3,12 @@ package com.kodilla.collections.adv.maps.schools;
 import java.util.Objects;
 
 public class Principal {
-    private String firstname;
-    private String lastname;
+    private final String firstname;
+    private final String lastname;
 
     public Principal(String firstname, String lastname) {
+        Objects.requireNonNull(firstname, "firstname must not be null");
+        Objects.requireNonNull(lastname, "lastname must not be null");
         this.firstname = firstname;
         this.lastname = lastname;
     }

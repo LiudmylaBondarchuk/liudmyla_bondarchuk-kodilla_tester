@@ -1,7 +1,7 @@
 package com.kodilla.interfaces.cars;
 
-public class Ford implements  Car{
-    private  int speed;
+public final class Ford implements Car {
+    private int speed;
 
     @Override
     public int getSpeed() {
@@ -10,12 +10,12 @@ public class Ford implements  Car{
 
     @Override
     public void increaseSpeed() {
-    speed +=15;
+        speed += 15;
     }
 
     @Override
     public void decreaseSpeed() {
-    speed = Math.max(0, speed - 10);
+        speed = Math.max(0, speed - 10);
     }
 
     @Override

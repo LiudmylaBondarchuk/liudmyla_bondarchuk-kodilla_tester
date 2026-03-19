@@ -3,13 +3,19 @@ package com.kodilla.collections.sets;
 import java.util.Objects;
 
 public class Order {
-    private String orderNumber;
-    private String productName;
-    private double quantity;
+    private final String orderNumber;
+    private final String productName;
+    private final double quantity;
 
     public Order(String orderNumber, String productName, double quantity) {
         Objects.requireNonNull(orderNumber, "orderNumber must not be null");
         Objects.requireNonNull(productName, "productName must not be null");
+        if (orderNumber.isBlank()) {
+            throw new IllegalArgumentException("orderNumber must not be blank");
+        }
+        if (productName.isBlank()) {
+            throw new IllegalArgumentException("productName must not be blank");
+        }
         if (quantity <= 0) {
             throw new IllegalArgumentException("quantity must be greater than 0");
         }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Grades {
-    private List<Double> grades = new ArrayList<>();
+    private final List<Double> grades;
 
     public Grades(List<Double> grades) {
         this.grades = new ArrayList<>(grades);

@@ -3,13 +3,19 @@ package com.kodilla.collections.sets.stamps;
 import java.util.Objects;
 
 public class Stamp {
-    private String name;
-    private double width;
-    private double height;
-    private boolean stamped;
+    private final String name;
+    private final double width;
+    private final double height;
+    private final boolean stamped;
 
     public Stamp(String name, double width, double height, boolean stamped) {
         Objects.requireNonNull(name, "name must not be null");
+        if (width <= 0) {
+            throw new IllegalArgumentException("width must be positive");
+        }
+        if (height <= 0) {
+            throw new IllegalArgumentException("height must be positive");
+        }
         this.name = name;
         this.width = width;
         this.height = height;

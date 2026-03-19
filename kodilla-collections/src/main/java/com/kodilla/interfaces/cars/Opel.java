@@ -1,6 +1,6 @@
 package com.kodilla.interfaces.cars;
 
-public class Opel implements Car {
+public final class Opel implements Car {
     private int speed;
 
     @Override
@@ -10,14 +10,12 @@ public class Opel implements Car {
 
     @Override
     public void increaseSpeed() {
-       speed +=10;
-
+        speed += 10;
     }
 
     @Override
     public void decreaseSpeed() {
         speed = Math.max(0, speed - 10);
-
     }
 
     @Override

@@ -3,8 +3,8 @@ package com.kodilla.collections.adv.maps.complex;
 import java.util.Objects;
 
 public class Student {
-    private String firstname;
-    private String lastname;
+    private final String firstname;
+    private final String lastname;
 
     public Student(String firstname, String lastname) {
         Objects.requireNonNull(firstname, "firstname must not be null");

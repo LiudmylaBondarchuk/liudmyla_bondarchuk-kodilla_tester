@@ -3,8 +3,8 @@ package com.kodilla.collections.adv.exercises.flights;
 import java.util.Objects;
 
 public class Flight {
-    private String departure;
-    private String arrival;
+    private final String departure;
+    private final String arrival;
 
     public Flight(String departure, String arrival) {
         Objects.requireNonNull(departure, "departure must not be null");

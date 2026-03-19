@@ -3,9 +3,11 @@ package com.kodilla.collections.adv.exercises.dictionary;
 import java.util.Objects;
 
 public class EnglishWord {
-    private String word;
-    private PartOfSpeech partOfSpeech;
+    private final String word;
+    private final PartOfSpeech partOfSpeech;
     public EnglishWord(String word, PartOfSpeech partOfSpeech) {
+        Objects.requireNonNull(word, "word must not be null");
+        Objects.requireNonNull(partOfSpeech, "partOfSpeech must not be null");
         this.word = word;
         this.partOfSpeech = partOfSpeech;
     }

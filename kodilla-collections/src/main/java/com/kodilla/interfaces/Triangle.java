@@ -2,9 +2,9 @@ package com.kodilla.interfaces;
 
 public class Triangle implements Shape {
 
-    private double sideA;
-    private double sideB;
-    private double sideC;
+    private final double sideA;
+    private final double sideB;
+    private final double sideC;
 
     public Triangle(double sideA, double sideB, double sideC) {
         if (sideA <= 0 || sideB <= 0 || sideC <= 0) {
