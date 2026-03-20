@@ -73,10 +73,12 @@ public class Task {
         this.taskFinancialDetails = taskFinancialDetails;
     }
 
+    // JPA managed entity — mutable reference by design
     public TaskList getTaskList() {
         return taskList;
     }
 
+    // JPA managed entity — mutable reference by design
     public void setTaskList(TaskList taskList) {
         this.taskList = taskList;
     }
@@ -86,12 +88,14 @@ public class Task {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Task task = (Task) o;
+        if (id != 0 && task.id != 0) return id == task.id;
         return Objects.equals(description, task.description)
                 && Objects.equals(created, task.created);
     }
 
     @Override
     public int hashCode() {
+        if (id != 0) return Integer.hashCode(id);
         return Objects.hash(description, created);
     }
 }

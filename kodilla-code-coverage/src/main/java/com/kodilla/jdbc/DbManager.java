@@ -1,5 +1,7 @@
 package com.kodilla.jdbc;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -7,6 +9,7 @@ import java.util.Properties;
 
 public class DbManager implements AutoCloseable {
 
+    private static final String PROPERTIES_FILE = "db.properties";
     private static final String DEFAULT_USER = "kodilla";
     private static final String DEFAULT_PASSWORD = "kodilla";
     private static final String DEFAULT_URL =
@@ -17,13 +20,31 @@ public class DbManager implements AutoCloseable {
     private static volatile DbManager dbManagerInstance;
 
     private DbManager() throws SQLException {
+        Properties fileProps = loadProperties();
+
         Properties connectionProps = new Properties();
         connectionProps.put("user",
-                System.getProperty("db.user", DEFAULT_USER));
+                System.getProperty("db.user",
+                        fileProps.getProperty("db.user", DEFAULT_USER)));
         connectionProps.put("password",
-                System.getProperty("db.password", DEFAULT_PASSWORD));
-        String url = System.getProperty("db.url", DEFAULT_URL);
+                System.getProperty("db.password",
+                        fileProps.getProperty("db.password", DEFAULT_PASSWORD)));
+        String url = System.getProperty("db.url",
+                fileProps.getProperty("db.url", DEFAULT_URL));
         conn = DriverManager.getConnection(url, connectionProps);
+    }
+
+    private static Properties loadProperties() {
+        Properties props = new Properties();
+        try (InputStream in = DbManager.class.getClassLoader()
+                .getResourceAsStream(PROPERTIES_FILE)) {
+            if (in != null) {
+                props.load(in);
+            }
+        } catch (IOException e) {
+            // fallback to hardcoded defaults
+        }
+        return props;
     }
 
     public static DbManager getInstance() throws SQLException {

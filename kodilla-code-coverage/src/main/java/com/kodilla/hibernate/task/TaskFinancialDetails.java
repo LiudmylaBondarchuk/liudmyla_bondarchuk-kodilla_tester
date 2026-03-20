@@ -23,6 +23,7 @@ public class TaskFinancialDetails {
     @Column(name = "PAID")
     private boolean paid;
 
+    // JPA requires no-arg constructor — validation is in the parameterized constructor
     public TaskFinancialDetails() {
     }
 
