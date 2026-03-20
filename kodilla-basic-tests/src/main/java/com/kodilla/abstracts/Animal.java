@@ -1,9 +1,9 @@
 package com.kodilla.abstracts;
 
 public abstract class Animal {
-    private int numberOfLegs;
+    private final int numberOfLegs;
 
-    public Animal (int numberOfLegs){
+    public Animal(int numberOfLegs){
         this.numberOfLegs = numberOfLegs;
     }
 

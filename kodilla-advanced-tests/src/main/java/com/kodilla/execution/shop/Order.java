@@ -10,6 +10,9 @@ public class Order {
     private final String login;
 
     public Order(BigDecimal value, LocalDate date, String login) {
+        Objects.requireNonNull(value, "value must not be null");
+        Objects.requireNonNull(date, "date must not be null");
+        Objects.requireNonNull(login, "login must not be null");
         this.value = value;
         this.date = date;
         this.login = login;

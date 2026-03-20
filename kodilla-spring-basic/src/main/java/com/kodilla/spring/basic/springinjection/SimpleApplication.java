@@ -15,10 +15,10 @@ public class SimpleApplication {
         if (checkReceiver(receiver)) {
             return this.messageService.send(message, receiver);
         }
-        return null;
+        return "";
     }
 
     private boolean checkReceiver(String receiver) {
-        return receiver != null && !receiver.isEmpty();
+        return receiver != null && !receiver.isBlank();
     }
 }

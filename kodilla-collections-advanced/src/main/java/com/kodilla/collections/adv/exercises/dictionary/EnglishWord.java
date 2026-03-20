@@ -30,4 +30,12 @@ public class EnglishWord {
     public int hashCode() {
         return Objects.hash(word, partOfSpeech);
     }
+
+    @Override
+    public String toString() {
+        return "EnglishWord{" +
+                "word='" + word + '\'' +
+                ", partOfSpeech=" + partOfSpeech +
+                '}';
+    }
 }

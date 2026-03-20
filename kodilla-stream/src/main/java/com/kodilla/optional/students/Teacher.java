@@ -6,6 +6,7 @@ public class Teacher {
     private final String name;
 
     public Teacher(String name) {
+        Objects.requireNonNull(name, "name must not be null");
         this.name = name;
     }
 

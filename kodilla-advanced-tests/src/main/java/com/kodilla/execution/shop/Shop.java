@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 
 public class Shop {
 
-    private Set<Order> orders = new HashSet<>();
+    private final Set<Order> orders = new HashSet<>();
 
     public void addOrder(Order order) {
         java.util.Objects.requireNonNull(order, "Order must not be null");

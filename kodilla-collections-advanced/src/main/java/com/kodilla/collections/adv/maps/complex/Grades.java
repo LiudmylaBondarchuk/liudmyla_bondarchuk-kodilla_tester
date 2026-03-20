@@ -2,6 +2,7 @@ package com.kodilla.collections.adv.maps.complex;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Grades {
     private final List<Double> grades;
@@ -19,6 +20,19 @@ public class Grades {
             sum += grade;
         }
         return sum / grades.size();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Grades that = (Grades) o;
+        return Objects.equals(grades, that.grades);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(grades);
     }
 
     @Override

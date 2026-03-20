@@ -2,6 +2,7 @@ package com.kodilla.school;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class Student {
     private static final int MIN_GRADE = 1;
@@ -11,6 +12,7 @@ public class Student {
     private final Map<String, Grades> subjects;
 
     public Student(String name) {
+        Objects.requireNonNull(name, "name must not be null");
         this.name = name;
         this.subjects = new HashMap<>();
         subjects.put("maths", new Grades());

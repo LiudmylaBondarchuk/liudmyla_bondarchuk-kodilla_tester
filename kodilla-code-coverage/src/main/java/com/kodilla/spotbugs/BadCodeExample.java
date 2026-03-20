@@ -4,18 +4,14 @@ import java.util.Objects;
 
 public class BadCodeExample {
 
-    private String type;
+    private final String type;
 
-    public static double getPi() {
-        return Math.PI;
+    public BadCodeExample(String type) {
+        this.type = type;
     }
 
     public String getType() {
         return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     @Override
