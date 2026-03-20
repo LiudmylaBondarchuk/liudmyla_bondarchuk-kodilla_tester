@@ -2,17 +2,6 @@ package com.kodilla;
 
 import java.util.Scanner;
 
-enum Color {
-    BLACK,
-    WHITE,
-    PINK,
-    GREEN,
-    RED,
-    ORANGE,
-    YELLOW,
-    BLUE
-}
-
 public class ColorApplication {
 
     private static final Scanner scanner = new Scanner(System.in);

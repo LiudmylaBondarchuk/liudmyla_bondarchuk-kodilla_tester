@@ -1,10 +1,5 @@
 package com.kodilla;
-enum KodillaCourse {
-    JD,  /* Java Developer */
-    JDP, /* Java Developer Plus */
-    TA,  /* Tester Automatyzujący */
-    TAI  /* Tester Automatyzujący z egzaminem ISTQB */
-}
+
 public class MyCourseClass {
     public static void main(String[] args) {
         KodillaCourse myCourse = KodillaCourse.TA;
