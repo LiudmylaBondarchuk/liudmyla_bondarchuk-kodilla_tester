@@ -8,7 +8,15 @@ import java.util.Random;
 @Configuration
 public class AnimalFactory {
 
-    private final Random random = new Random();
+    private final Random random;
+
+    public AnimalFactory() {
+        this(new Random());
+    }
+
+    public AnimalFactory(Random random) {
+        this.random = random;
+    }
 
     @Bean
     public Dog createDog() {
