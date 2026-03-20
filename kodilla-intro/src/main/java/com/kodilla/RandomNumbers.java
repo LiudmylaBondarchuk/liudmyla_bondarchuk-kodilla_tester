@@ -4,6 +4,9 @@ import java.util.Random;
 
 public class RandomNumbers {
 
+    private static final int SUM_LIMIT = 5000;
+    private static final int MAX_RANDOM_VALUE = 31;
+
     private int min = Integer.MAX_VALUE;
     private int max = Integer.MIN_VALUE;
     private boolean generated = false;
@@ -12,8 +15,8 @@ public class RandomNumbers {
         Random random = new Random();
         int sum = 0;
 
-        while (sum <= 5000) {
-            int number = random.nextInt(31);
+        while (sum <= SUM_LIMIT) {
+            int number = random.nextInt(MAX_RANDOM_VALUE);
             sum += number;
             generated = true;
 

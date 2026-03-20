@@ -6,7 +6,6 @@ import com.kodilla.interfaces.cars.Opel;
 import com.kodilla.interfaces.cars.Toyota;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class CarsListApplication {
@@ -25,13 +24,13 @@ public class CarsListApplication {
             CarUtils.describeCar(car);
         }
 
-            cars.remove(1);
-            cars.remove(ford);
+        cars.remove(1);
+        cars.remove(ford);
 
-            System.out.println("Collection content after removals:");
-            for (Car car : cars) {
-                CarUtils.describeCar(car);
-            }
-                System.out.println("Current collection size: " + cars.size());
-            }
+        System.out.println("Collection content after removals:");
+        for (Car car : cars) {
+            CarUtils.describeCar(car);
         }
+        System.out.println("Current collection size: " + cars.size());
+    }
+}

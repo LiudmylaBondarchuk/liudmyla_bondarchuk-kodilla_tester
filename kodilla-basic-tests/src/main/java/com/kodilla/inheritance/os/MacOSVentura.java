@@ -14,7 +14,7 @@ public class MacOSVentura extends OperatingSystem {
         System.out.println("MacOSVentura is shutting down...");
     }
 
-    public MacOSVentura (int releaseYear){
+    public MacOSVentura(int releaseYear){
         super(releaseYear);
         System.out.println("MacOSVentura released in: " + releaseYear );
     }

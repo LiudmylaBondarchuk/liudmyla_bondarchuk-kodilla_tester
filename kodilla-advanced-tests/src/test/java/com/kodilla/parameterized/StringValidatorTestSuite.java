@@ -16,19 +16,19 @@ class StringValidatorTestSuite {
 
     @ParameterizedTest
     @ValueSource(strings = {"test", "XyZ"})
-    public void shouldReturnFalseIfStringIsNotEmpty(String text) {
+    void shouldReturnFalseIfStringIsNotEmpty(String text) {
         assertFalse(validator.isBlank(text));
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"", "   "})
-    public void shouldReturnTrueIfStringIsEmptyOrSpaces(String text) {
+    void shouldReturnTrueIfStringIsEmptyOrSpaces(String text) {
         assertTrue(validator.isBlank(text));
     }
 
     @ParameterizedTest
     @NullAndEmptySource
-    public void shouldReturnTrueIfStringIsNullOrEmpty(String text) {
+    void shouldReturnTrueIfStringIsNullOrEmpty(String text) {
         assertTrue(validator.isBlank(text));
     }
 }
