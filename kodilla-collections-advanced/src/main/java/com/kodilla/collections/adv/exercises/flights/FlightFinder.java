@@ -2,15 +2,18 @@ package com.kodilla.collections.adv.exercises.flights;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Predicate;
 
 public class FlightFinder {
 
     public List<Flight> findFlightsFrom(String departure) {
+        Objects.requireNonNull(departure, "departure must not be null");
         return findFlights(flight -> flight.getDeparture().equalsIgnoreCase(departure));
     }
 
     public List<Flight> findFlightsTo(String arrival) {
+        Objects.requireNonNull(arrival, "arrival must not be null");
         return findFlights(flight -> flight.getArrival().equalsIgnoreCase(arrival));
     }
 

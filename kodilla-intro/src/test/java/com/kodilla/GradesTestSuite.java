@@ -79,13 +79,10 @@ class GradesTestSuite {
         assertEquals(5.0, average, 0.001);
     }
 
-    @DisplayName("should return zero average for empty grades")
+    @DisplayName("should throw NoSuchElementException when averaging empty grades")
     @Test
     void testGetAverageOnEmptyGrades() {
-        // when
-        double average = grades.getAverage();
-
-        // then
-        assertEquals(0.0, average, 0.001);
+        // when & then
+        assertThrows(NoSuchElementException.class, () -> grades.getAverage());
     }
 }

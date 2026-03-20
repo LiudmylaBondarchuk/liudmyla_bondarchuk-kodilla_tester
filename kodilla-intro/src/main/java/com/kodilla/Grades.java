@@ -24,7 +24,7 @@ public class Grades {
 
     public double getAverage() {
         if (grades.isEmpty()) {
-            return 0.0;
+            throw new NoSuchElementException("No grades to average");
         }
         int sum = 0;
         for (int grade : grades) {

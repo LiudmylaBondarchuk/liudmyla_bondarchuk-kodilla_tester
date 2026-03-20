@@ -30,11 +30,17 @@ public class School {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         School school = (School) o;
-        return Objects.equals(name, school.name);
+        return Objects.equals(name, school.name)
+                && Objects.equals(studentsInClasses, school.studentsInClasses);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name);
+        return Objects.hash(name, studentsInClasses);
+    }
+
+    @Override
+    public String toString() {
+        return "School{name='" + name + "', studentsInClasses=" + studentsInClasses + "}";
     }
 }

@@ -6,6 +6,7 @@ import io.restassured.http.ContentType;
 import io.restassured.module.mockmvc.RestAssuredMockMvc;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -20,6 +21,7 @@ import java.util.Optional;
 import static io.restassured.module.mockmvc.RestAssuredMockMvc.given;
 import static io.restassured.module.mockmvc.RestAssuredMockMvc.when;
 
+@DisplayName("BookController REST Assured Test Suite")
 @ExtendWith(MockitoExtension.class)
 class BookControllerRestAssuredTestSuite {
 
@@ -34,6 +36,7 @@ class BookControllerRestAssuredTestSuite {
         RestAssuredMockMvc.standaloneSetup(bookController);
     }
 
+    @DisplayName("should fetch all books")
     @Test
     void shouldFetchBooks() {
         Mockito.when(bookService.getBooks())
@@ -53,6 +56,7 @@ class BookControllerRestAssuredTestSuite {
                 .status(HttpStatus.OK);
     }
 
+    @DisplayName("should add a new book")
     @Test
     void shouldAddBook() {
         BookDto newBook = new BookDto(null, "Clean Code", "Robert Martin");
@@ -72,6 +76,7 @@ class BookControllerRestAssuredTestSuite {
                 .body("author", Matchers.equalTo("Robert Martin"));
     }
 
+    @DisplayName("should get book by ID")
     @Test
     void shouldGetBookById() {
         BookDto book = new BookDto(1L, "Hobbit", "Tolkien");
@@ -86,6 +91,7 @@ class BookControllerRestAssuredTestSuite {
                 .body("author", Matchers.equalTo("Tolkien"));
     }
 
+    @DisplayName("should delete book by ID")
     @Test
     void shouldDeleteBookById() {
         Mockito.when(bookService.removeById(1L)).thenReturn(true);
