@@ -2,6 +2,7 @@ package com.kodilla.rest.controller;
 
 import com.github.tomakehurst.wiremock.junit5.WireMockExtension;
 import org.hamcrest.Matchers;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
@@ -12,6 +13,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig;
 import static io.restassured.RestAssured.given;
 
+@DisplayName("External API REST Assured test suite")
 public class ExternalApiRestAssuredTestSuite {
 
     @RegisterExtension
@@ -20,6 +22,7 @@ public class ExternalApiRestAssuredTestSuite {
             .build();
 
     @Test
+    @DisplayName("should update external post via PUT")
     void shouldUpdateExternalPost() {
         wireMock.stubFor(put(urlEqualTo("/posts/1"))
                 .willReturn(aResponse()

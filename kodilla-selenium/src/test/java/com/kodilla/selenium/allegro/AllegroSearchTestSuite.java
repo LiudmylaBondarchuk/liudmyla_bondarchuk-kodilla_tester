@@ -1,11 +1,9 @@
 package com.kodilla.selenium.allegro;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+import com.kodilla.selenium.config.WebDriverFactory;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.util.List;
 
@@ -20,10 +18,7 @@ class AllegroSearchTestSuite {
 
     @BeforeEach
     void setUp() {
-        WebDriverManager.chromedriver().setup();
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless");
-        driver = new ChromeDriver(options);
+        driver = WebDriverFactory.createChromeDriver();
         allegroPage = new AllegroPage(driver);
     }
 

@@ -5,9 +5,9 @@ import java.util.Objects;
 public class Order {
     private final String orderNumber;
     private final String productName;
-    private final double quantity;
+    private final int quantity;
 
-    public Order(String orderNumber, String productName, double quantity) {
+    public Order(String orderNumber, String productName, int quantity) {
         Objects.requireNonNull(orderNumber, "orderNumber must not be null");
         Objects.requireNonNull(productName, "productName must not be null");
         if (orderNumber.isBlank()) {
@@ -32,7 +32,7 @@ public class Order {
         return productName;
     }
 
-    public double getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
     @Override
@@ -42,7 +42,7 @@ public class Order {
         if (o == null || getClass() != o.getClass())
             return false;
         Order order = (Order) o;
-        return Double.compare(quantity, order.quantity) == 0
+        return quantity == order.quantity
                 && orderNumber.equals(order.orderNumber)
                 && productName.equals(order.productName);
     }
