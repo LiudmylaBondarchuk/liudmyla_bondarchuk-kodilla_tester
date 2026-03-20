@@ -5,7 +5,7 @@ import java.util.Random;
 public class RandomNumbers {
 
     private static final int SUM_LIMIT = 5000;
-    private static final int MAX_RANDOM_VALUE = 31;
+    private static final int RANDOM_BOUND = 31;
 
     private int min = Integer.MAX_VALUE;
     private int max = Integer.MIN_VALUE;
@@ -16,7 +16,7 @@ public class RandomNumbers {
         int sum = 0;
 
         while (sum <= SUM_LIMIT) {
-            int number = random.nextInt(MAX_RANDOM_VALUE);
+            int number = random.nextInt(RANDOM_BOUND);
             sum += number;
             generated = true;
 

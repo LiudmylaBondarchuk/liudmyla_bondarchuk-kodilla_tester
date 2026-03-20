@@ -23,6 +23,9 @@ public class Calculator {
     }
 
     public double circleArea(double r) {
+        if (r < 0) {
+            throw new IllegalArgumentException("radius must not be negative");
+        }
         return Math.PI * r * r;
     }
 

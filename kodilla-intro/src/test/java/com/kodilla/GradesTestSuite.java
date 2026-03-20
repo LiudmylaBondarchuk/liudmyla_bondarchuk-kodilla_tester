@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.NoSuchElementException;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Grades Test Suite")
@@ -42,14 +44,11 @@ class GradesTestSuite {
         assertEquals(5, last);
     }
 
-    @DisplayName("should return zero when getting last from empty grades")
+    @DisplayName("should throw NoSuchElementException when getting last from empty grades")
     @Test
     void testGetLastOnEmptyGrades() {
-        // when
-        int last = grades.getLast();
-
-        // then
-        assertEquals(0, last);
+        // when & then
+        assertThrows(NoSuchElementException.class, () -> grades.getLast());
     }
 
     @DisplayName("should calculate average correctly")

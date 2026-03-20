@@ -15,6 +15,9 @@ public class Notebook {
     private final int year;
 
     public Notebook(double weight, double price, int year) {
+        if (weight < 0) throw new IllegalArgumentException("weight must not be negative");
+        if (price < 0) throw new IllegalArgumentException("price must not be negative");
+        if (year < 1970 || year > 2030) throw new IllegalArgumentException("year out of valid range");
         this.weight = weight;
         this.price = price;
         this.year = year;

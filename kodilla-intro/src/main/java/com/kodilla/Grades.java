@@ -2,6 +2,7 @@ package com.kodilla;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 public class Grades {
     private final List<Integer> grades;
@@ -16,7 +17,7 @@ public class Grades {
 
     public int getLast() {
         if (grades.isEmpty()) {
-            return 0;
+            throw new NoSuchElementException("No grades available");
         }
         return grades.get(grades.size() - 1);
     }

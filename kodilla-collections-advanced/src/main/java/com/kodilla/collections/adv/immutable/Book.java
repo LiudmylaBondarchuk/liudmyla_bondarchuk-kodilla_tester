@@ -7,6 +7,8 @@ public class Book {
     private final String title;
 
     public Book(String author, String title) {
+        Objects.requireNonNull(author, "author must not be null");
+        Objects.requireNonNull(title, "title must not be null");
         this.author = author;
         this.title = title;
     }
