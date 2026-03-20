@@ -1,5 +1,7 @@
 package com.kodilla.bank;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,29 +40,29 @@ public class Bank {
         return count;
     }
 
-    public double getAverageWithdrawal() {
-        double sum = 0;
+    public BigDecimal getAverageWithdrawal() {
+        long sum = 0;
         int count = 0;
         for (CashMachine cashMachine : cashMachines) {
-            sum += cashMachine.getAverageWithdrawal() * cashMachine.getWithdrawalsCount();
+            sum += cashMachine.getWithdrawalsSum();
             count += cashMachine.getWithdrawalsCount();
         }
         if (count == 0) {
-            return 0;
+            return BigDecimal.ZERO;
         }
-        return sum / count;
+        return BigDecimal.valueOf(sum).divide(BigDecimal.valueOf(count), 2, RoundingMode.HALF_UP);
     }
 
-    public double getAverageDeposit() {
-        double sum = 0;
+    public BigDecimal getAverageDeposit() {
+        long sum = 0;
         int count = 0;
         for (CashMachine cashMachine : cashMachines) {
-            sum += cashMachine.getAverageDeposit() * cashMachine.getDepositsCount();
+            sum += cashMachine.getDepositsSum();
             count += cashMachine.getDepositsCount();
         }
         if (count == 0) {
-            return 0;
+            return BigDecimal.ZERO;
         }
-        return sum / count;
+        return BigDecimal.valueOf(sum).divide(BigDecimal.valueOf(count), 2, RoundingMode.HALF_UP);
     }
 }

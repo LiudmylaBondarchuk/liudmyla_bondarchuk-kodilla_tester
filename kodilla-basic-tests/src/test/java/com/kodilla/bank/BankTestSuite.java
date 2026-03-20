@@ -1,11 +1,17 @@
 package com.kodilla.bank;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.math.BigDecimal;
+
 import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("Bank test suite")
 class BankTestSuite {
 
     @Test
+    @DisplayName("should add cash machines and calculate overall balance")
     void shouldAddCashMachinesAndCalculateOverallBalance() {
         // Given
         Bank bank = new Bank();
@@ -26,6 +32,7 @@ class BankTestSuite {
     }
 
     @Test
+    @DisplayName("should count total withdrawals and deposits across ATMs")
     void shouldCountTotalWithdrawalsAndDepositsAcrossATMs() {
         // Given
         Bank bank = new Bank();
@@ -49,6 +56,7 @@ class BankTestSuite {
     }
 
     @Test
+    @DisplayName("should calculate average deposits and withdrawals correctly")
     void shouldCalculateAverageDepositsAndWithdrawalsCorrectly() {
         // Given
         Bank bank = new Bank();
@@ -62,15 +70,16 @@ class BankTestSuite {
         // When
         bank.addCashMachine(atm1);
         bank.addCashMachine(atm2);
-        double avgDeposit = bank.getAverageDeposit();
-        double avgWithdrawal = bank.getAverageWithdrawal();
+        BigDecimal avgDeposit = bank.getAverageDeposit();
+        BigDecimal avgWithdrawal = bank.getAverageWithdrawal();
 
         // Then
-        assertEquals(150, avgDeposit);
-        assertEquals(35, avgWithdrawal);
+        assertEquals(new BigDecimal("150.00"), avgDeposit);
+        assertEquals(new BigDecimal("35.00"), avgWithdrawal);
     }
 
     @Test
+    @DisplayName("should return zero if no cash machines")
     void shouldReturnZeroIfNoCashMachines() {
         // Given
         Bank bank = new Bank();
@@ -79,14 +88,14 @@ class BankTestSuite {
         long balance = bank.getBalance();
         int depositsCount = bank.getDepositsCount();
         int withdrawalsCount = bank.getWithdrawalsCount();
-        double avgDeposit = bank.getAverageDeposit();
-        double avgWithdrawal = bank.getAverageWithdrawal();
+        BigDecimal avgDeposit = bank.getAverageDeposit();
+        BigDecimal avgWithdrawal = bank.getAverageWithdrawal();
 
         // Then
         assertEquals(0L, balance);
         assertEquals(0, depositsCount);
         assertEquals(0, withdrawalsCount);
-        assertEquals(0, avgDeposit);
-        assertEquals(0, avgWithdrawal);
+        assertEquals(BigDecimal.ZERO, avgDeposit);
+        assertEquals(BigDecimal.ZERO, avgWithdrawal);
     }
 }
