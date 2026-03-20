@@ -4,6 +4,8 @@ import com.kodilla.hibernate.manytomany.repository.CompanyRepository;
 import com.kodilla.hibernate.manytomany.repository.EmployeeRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.junit.jupiter.api.Tag;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,6 +13,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 @Tag("integration")
 class CompanyEmployeeTestSuite {
+
+    private static final Logger logger = LoggerFactory.getLogger(CompanyEmployeeTestSuite.class);
 
     @Autowired
     private CompanyRepository companyRepository;
@@ -57,7 +61,7 @@ class CompanyEmployeeTestSuite {
             companyRepository.deleteById(dataMasters.getId());
             companyRepository.deleteById(greyMatter.getId());
         } catch (Exception e) {
-            System.err.println("Cleanup failed: " + e.getMessage());
+            logger.error("Cleanup failed", e);
         }
     }
 }

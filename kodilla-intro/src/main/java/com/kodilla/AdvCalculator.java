@@ -5,7 +5,11 @@ public class AdvCalculator {
         String userSelected = UserDialogs.getUserSelection();
         int a = UserDialogs.getValue();
         int b = UserDialogs.getValue();
-        return switch (userSelected) {
+        return compute(userSelected, a, b);
+    }
+
+    public double compute(String operation, int a, int b) {
+        return switch (operation) {
             case "ADD" -> (double) a + b;
             case "SUB" -> (double) a - b;
             case "DIV" -> {
@@ -15,7 +19,7 @@ public class AdvCalculator {
                 yield (double) a / b;
             }
             case "MUL" -> (double) a * b;
-            default -> throw new IllegalArgumentException("Unknown operation: " + userSelected);
+            default -> throw new IllegalArgumentException("Unknown operation: " + operation);
         };
     }
 }
