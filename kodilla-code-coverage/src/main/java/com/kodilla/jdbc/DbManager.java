@@ -40,6 +40,7 @@ public class DbManager implements AutoCloseable {
         return instance;
     }
 
+    // SpotBugs EI_EXPOSE_REP: shared connection by design (singleton connection manager)
     public Connection getConnection() {
         return conn;
     }

@@ -1,17 +1,17 @@
 package com.kodilla.selenium.allegro;
 
+import com.kodilla.selenium.pom.AbstractPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 import java.util.List;
 
-public class AllegroPage {
-    private static final Duration TIMEOUT = Duration.ofSeconds(20);
+public class AllegroPage extends AbstractPage {
+
+    private static final String PAGE_URL = "https://allegro.pl/";
 
     private static final By COOKIE_ACCEPT_BUTTON = By.cssSelector("button[data-role='accept-consent']");
     private static final By CATEGORY_DROPDOWN = By.cssSelector("select[data-role='search-scope-select']");
@@ -19,25 +19,18 @@ public class AllegroPage {
     private static final By SEARCH_BUTTON = By.cssSelector("button[type='submit'] span");
     private static final By PRODUCT_ARTICLE = By.cssSelector("section > div > article");
 
-    private final WebDriver driver;
-    private final WebDriverWait wait;
-
     public AllegroPage(WebDriver driver) {
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, TIMEOUT);
+        super(driver);
     }
 
-    public void open() {
-        driver.get("https://allegro.pl/");
-        driver.manage().window().maximize();
+    @Override
+    public String getPageUrl() {
+        return PAGE_URL;
     }
 
     public void acceptCookies() {
         try {
-            WebElement acceptButton = wait.until(
-                    ExpectedConditions.elementToBeClickable(COOKIE_ACCEPT_BUTTON)
-            );
-            acceptButton.click();
+            click(COOKIE_ACCEPT_BUTTON);
         } catch (org.openqa.selenium.TimeoutException ignored) {
             // Cookie popup may not be present — this is expected
         }
@@ -51,20 +44,11 @@ public class AllegroPage {
     }
 
     public void searchFor(String query) {
-        WebElement searchBox = wait.until(
-                ExpectedConditions.presenceOfElementLocated(SEARCH_INPUT)
-        );
-        searchBox.clear();
-        searchBox.sendKeys(query);
-
-        WebElement searchButton = wait.until(
-                ExpectedConditions.elementToBeClickable(SEARCH_BUTTON)
-        );
-        searchButton.click();
+        typeInto(SEARCH_INPUT, query);
+        click(SEARCH_BUTTON);
     }
 
     public List<WebElement> getProducts() {
-        wait.until(ExpectedConditions.presenceOfElementLocated(PRODUCT_ARTICLE));
-        return driver.findElements(PRODUCT_ARTICLE);
+        return waitForPresenceOfAll(PRODUCT_ARTICLE);
     }
 }

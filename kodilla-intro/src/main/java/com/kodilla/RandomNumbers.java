@@ -12,6 +12,9 @@ public class RandomNumbers {
     private boolean generated = false;
 
     public void generate() {
+        min = Integer.MAX_VALUE;
+        max = Integer.MIN_VALUE;
+
         Random random = new Random();
         int sum = 0;
 
