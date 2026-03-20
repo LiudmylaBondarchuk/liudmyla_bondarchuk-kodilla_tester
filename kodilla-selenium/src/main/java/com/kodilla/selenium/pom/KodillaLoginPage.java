@@ -1,6 +1,7 @@
 package com.kodilla.selenium.pom;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 
 public class KodillaLoginPage extends AbstractPage {
@@ -28,8 +29,12 @@ public class KodillaLoginPage extends AbstractPage {
         typeInto(PASSWORD_INPUT, password);
         click(LOGIN_BUTTON);
 
-        String alertText = driver.switchTo().alert().getText();
-        driver.switchTo().alert().dismiss();
-        return alertText.contains(LOGIN_SUCCESS_TEXT);
+        try {
+            String alertText = driver.switchTo().alert().getText();
+            driver.switchTo().alert().dismiss();
+            return alertText.contains(LOGIN_SUCCESS_TEXT);
+        } catch (NoAlertPresentException e) {
+            return false;
+        }
     }
 }

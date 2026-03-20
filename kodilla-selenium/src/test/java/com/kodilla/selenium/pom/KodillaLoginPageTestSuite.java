@@ -10,6 +10,9 @@ import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("Kodilla Login Page Tests")
 class KodillaLoginPageTestSuite {
 
+    private static final String TEST_EMAIL = System.getenv().getOrDefault("KODILLA_TEST_EMAIL", "test@kodilla.com");
+    private static final String TEST_PASSWORD = System.getenv().getOrDefault("KODILLA_TEST_PASSWORD", "kodilla123");
+
     private WebDriver driver;
     private KodillaLoginPage loginPage;
 
@@ -38,7 +41,7 @@ class KodillaLoginPageTestSuite {
     @DisplayName("should accept valid credentials")
     void shouldAcceptValidCredentials() {
         loginPage.open();
-        boolean loggedIn = loginPage.login("test@kodilla.com", "kodilla123");
+        boolean loggedIn = loginPage.login(TEST_EMAIL, TEST_PASSWORD);
         assertTrue(loggedIn, "Login with valid credentials should succeed");
     }
 
@@ -46,7 +49,7 @@ class KodillaLoginPageTestSuite {
     @DisplayName("should reject valid email with wrong password")
     void shouldRejectValidEmailWithWrongPassword() {
         loginPage.open();
-        boolean loggedIn = loginPage.login("test@kodilla.com", "wrongpassword");
+        boolean loggedIn = loginPage.login(TEST_EMAIL, "wrongpassword");
         assertFalse(loggedIn, "Login with wrong password should fail");
     }
 }

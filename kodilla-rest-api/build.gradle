@@ -11,6 +11,7 @@ dependencies {
     testImplementation libs.rest.assured.spring.mock.mvc
     testImplementation libs.rest.assured
     testImplementation libs.assertj.core
+    testImplementation libs.wiremock
 }
 
 test {

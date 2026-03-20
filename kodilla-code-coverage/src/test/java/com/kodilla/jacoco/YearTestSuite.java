@@ -1,12 +1,15 @@
 package com.kodilla.jacoco;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@DisplayName("Year leap year test suite")
 class YearTestSuite {
 
+    @DisplayName("Should be leap year if divisible by 400")
     @Test
     void shouldBeLeapYearIfDivisibleBy400() {
         //given
@@ -19,6 +22,7 @@ class YearTestSuite {
         assertTrue(isLeapYear);
     }
 
+    @DisplayName("Should not be leap year if divisible by 100 but not by 400")
     @Test
     void shouldNotBeLeapYearIfDivisibleBy100ButNotBy400() {
         //given
@@ -31,6 +35,7 @@ class YearTestSuite {
         assertFalse(isLeapYear);
     }
 
+    @DisplayName("Should be leap year if divisible by 4 but not by 100")
     @Test
     void shouldBeLeapYearIfDivisibleBy4ButNotBy100() {
         //given
@@ -43,6 +48,7 @@ class YearTestSuite {
         assertTrue(isLeapYear);
     }
 
+    @DisplayName("Should not be leap year if not divisible by 4")
     @Test
     void shouldNotBeLeapYearIfNotDivisibleBy4() {
         //given
