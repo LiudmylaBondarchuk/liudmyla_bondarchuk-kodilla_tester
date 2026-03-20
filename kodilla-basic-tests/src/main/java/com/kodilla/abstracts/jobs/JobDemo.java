@@ -1,4 +1,4 @@
-package com.kodilla.abstracts.shapes;
+package com.kodilla.abstracts.jobs;
 
 public class JobDemo {
     public static void main(String[] args) {

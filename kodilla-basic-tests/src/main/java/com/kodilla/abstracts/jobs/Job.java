@@ -1,10 +1,10 @@
-package com.kodilla.abstracts.shapes;
+package com.kodilla.abstracts.jobs;
 
 public abstract class Job {
     private final int salary;
     private final String responsibilities;
 
-    public Job (int salary, String responsibilities){
+    public Job(int salary, String responsibilities){
         this.salary = salary;
         this.responsibilities = responsibilities;
     }

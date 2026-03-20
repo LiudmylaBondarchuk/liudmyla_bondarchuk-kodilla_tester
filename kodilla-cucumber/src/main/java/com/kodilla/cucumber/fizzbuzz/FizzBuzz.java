@@ -1,4 +1,4 @@
-package fizzbuzz;
+package com.kodilla.cucumber.fizzbuzz;
 
 public class FizzBuzz {
 

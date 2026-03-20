@@ -1,4 +1,4 @@
-package wallet;
+package com.kodilla.cucumber.wallet;
 
 public class InsufficientFundsException extends RuntimeException {
 

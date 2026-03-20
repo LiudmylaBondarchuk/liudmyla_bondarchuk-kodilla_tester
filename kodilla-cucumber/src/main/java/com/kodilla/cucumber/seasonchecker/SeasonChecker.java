@@ -1,4 +1,4 @@
-package seasonchecker;
+package com.kodilla.cucumber.seasonchecker;
 
 import java.time.MonthDay;
 

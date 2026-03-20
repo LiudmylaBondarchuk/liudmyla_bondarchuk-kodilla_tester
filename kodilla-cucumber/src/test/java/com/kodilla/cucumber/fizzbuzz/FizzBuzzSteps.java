@@ -1,4 +1,4 @@
-package fizzbuzz;
+package com.kodilla.cucumber.fizzbuzz;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

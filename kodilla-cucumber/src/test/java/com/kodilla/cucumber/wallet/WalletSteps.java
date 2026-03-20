@@ -1,4 +1,4 @@
-package wallet;
+package com.kodilla.cucumber.wallet;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;

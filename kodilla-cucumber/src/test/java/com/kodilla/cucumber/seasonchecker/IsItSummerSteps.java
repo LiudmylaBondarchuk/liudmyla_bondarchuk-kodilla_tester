@@ -1,4 +1,4 @@
-package seasonchecker;
+package com.kodilla.cucumber.seasonchecker;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -7,7 +7,7 @@ import io.cucumber.java.en.When;
 import java.time.MonthDay;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static seasonchecker.SeasonChecker.checkIfSummer;
+import static com.kodilla.cucumber.seasonchecker.SeasonChecker.checkIfSummer;
 
 public class IsItSummerSteps {
     private MonthDay today;

@@ -1,4 +1,4 @@
-package com.kodilla.abstracts.shapes;
+package com.kodilla.abstracts.jobs;
 
 public class BusinessAnalyst extends Job{
     public BusinessAnalyst() {
