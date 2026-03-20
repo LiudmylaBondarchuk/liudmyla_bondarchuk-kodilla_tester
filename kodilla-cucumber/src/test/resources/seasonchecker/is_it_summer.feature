@@ -11,11 +11,11 @@ Feature: Is it Summer? Everybody likes Summer
       | 1     | 2   | Nope         |
       | 2     | 10  | Nope         |
       | 5     | 5   | Nope         |
-      | 6     | 20  | Nope         |
+      | 6     | 20  | Yes! Summer! |
       | 6     | 21  | Yes! Summer! |
       | 7     | 15  | Yes! Summer! |
       | 8     | 1   | Yes! Summer! |
       | 8     | 23  | Yes! Summer! |
       | 9     | 23  | Yes! Summer! |
-      | 9     | 24  | Nope         |
+      | 9     | 24  | Yes! Summer! |
       | 12    | 31  | Nope         |

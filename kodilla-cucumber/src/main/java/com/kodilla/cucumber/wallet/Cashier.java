@@ -13,6 +13,11 @@ public class Cashier {
     public void withdraw(Wallet wallet, long amount) {
         Objects.requireNonNull(wallet, "wallet must not be null");
         wallet.debit(amount);
-        cashSlot.dispense(amount);
+        try {
+            cashSlot.dispense(amount);
+        } catch (RuntimeException e) {
+            wallet.deposit(amount);
+            throw e;
+        }
     }
 }

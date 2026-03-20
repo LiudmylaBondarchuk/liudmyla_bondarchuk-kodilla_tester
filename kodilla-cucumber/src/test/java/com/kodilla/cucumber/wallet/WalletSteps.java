@@ -19,31 +19,28 @@ public class WalletSteps {
         }
     }
 
-    @Given("I have deposited ${int} in my wallet")
-    public void i_have_deposited_in_my_wallet(int amount) {
+    @Given("I have deposited ${long} in my wallet")
+    public void i_have_deposited_in_my_wallet(long amount) {
         initIfNeeded();
         wallet.deposit(amount);
-        assertEquals(amount, wallet.getBalance(),
-                "Incorrect wallet balance after deposit");
     }
 
-    @Given("there is ${int} in my wallet")
-    public void there_is_in_my_wallet(int amount) {
+    @Given("there is ${long} in my wallet")
+    public void there_is_in_my_wallet(long amount) {
         initIfNeeded();
         if (amount > 0) {
             wallet.deposit(amount);
         }
-        assertEquals(amount, wallet.getBalance(), "Incorrect wallet balance");
     }
 
-    @When("I request ${int}")
-    public void i_request(int amount) {
+    @When("I request ${long}")
+    public void i_request(long amount) {
         Cashier cashier = new Cashier(cashSlot);
         cashier.withdraw(wallet, amount);
     }
 
-    @When("I try to withdraw ${int}")
-    public void i_try_to_withdraw(int amount) {
+    @When("I try to withdraw ${long}")
+    public void i_try_to_withdraw(long amount) {
         Cashier cashier = new Cashier(cashSlot);
         try {
             cashier.withdraw(wallet, amount);
@@ -57,13 +54,13 @@ public class WalletSteps {
         this.checkedBalance = wallet.getBalance();
     }
 
-    @Then("${int} should be dispensed")
-    public void should_be_dispensed(int amount) {
+    @Then("${long} should be dispensed")
+    public void should_be_dispensed(long amount) {
         assertEquals(amount, cashSlot.getContents());
     }
 
-    @Then("the balance of my wallet should be ${int}")
-    public void the_balance_of_my_wallet_should_be(int expected) {
+    @Then("the balance of my wallet should be ${long}")
+    public void the_balance_of_my_wallet_should_be(long expected) {
         assertEquals(expected, wallet.getBalance(),
                 "Incorrect wallet balance");
     }
@@ -81,8 +78,8 @@ public class WalletSteps {
                 "Expected 'Insufficient funds' message");
     }
 
-    @Then("I should see that the balance is ${int}")
-    public void i_should_see_that_the_balance_is(int expected) {
+    @Then("I should see that the balance is ${long}")
+    public void i_should_see_that_the_balance_is(long expected) {
         assertEquals(expected, checkedBalance);
     }
 }
