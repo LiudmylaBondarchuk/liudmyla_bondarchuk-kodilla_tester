@@ -7,13 +7,12 @@ import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("Clock Scope Tests")
 class ClockTestSuite {
     @Test
-    @DisplayName("should create clock instances with different times")
-    void shouldCreateClocksWithDifferentTimes() throws InterruptedException {
+    @DisplayName("should create new clock instance on each request (prototype scope)")
+    void shouldCreateNewClockInstanceOnEachRequest() {
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring.basic");
         Clock first = context.getBean(Clock.class);
-        Thread.sleep(10);
         Clock second = context.getBean(Clock.class);
-        assertNotEquals(first, second);
+        assertNotSame(first, second);
         assertNotNull(first.getTime());
         assertNotNull(second.getTime());
     }

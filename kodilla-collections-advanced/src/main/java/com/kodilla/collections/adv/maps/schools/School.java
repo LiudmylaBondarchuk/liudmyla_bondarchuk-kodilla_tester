@@ -2,6 +2,7 @@ package com.kodilla.collections.adv.maps.schools;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class School {
     private final String name;
@@ -22,5 +23,18 @@ public class School {
             sum += students;
         }
         return sum;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        School school = (School) o;
+        return Objects.equals(name, school.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 }
