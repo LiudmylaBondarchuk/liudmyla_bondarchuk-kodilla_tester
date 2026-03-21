@@ -1,5 +1,7 @@
 package com.kodilla.interfaces;
 
+import java.util.Objects;
+
 public class Triangle implements Shape {
 
     private final double sideA;
@@ -27,5 +29,25 @@ public class Triangle implements Shape {
     @Override
     public double getPerimeter() {
         return sideA + sideB + sideC;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Triangle triangle = (Triangle) o;
+        return Double.compare(triangle.sideA, sideA) == 0
+                && Double.compare(triangle.sideB, sideB) == 0
+                && Double.compare(triangle.sideC, sideC) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(sideA, sideB, sideC);
+    }
+
+    @Override
+    public String toString() {
+        return "Triangle{sideA=" + sideA + ", sideB=" + sideB + ", sideC=" + sideC + "}";
     }
 }

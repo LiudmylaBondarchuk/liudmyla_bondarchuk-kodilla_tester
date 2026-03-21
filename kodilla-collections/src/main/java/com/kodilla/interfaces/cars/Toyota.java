@@ -1,7 +1,5 @@
 package com.kodilla.interfaces.cars;
 
-import java.util.Objects;
-
 public final class Toyota implements Car {
     private int speed;
 
@@ -23,19 +21,6 @@ public final class Toyota implements Car {
     @Override
     public String getName() {
         return "Toyota";
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Toyota toyota = (Toyota) o;
-        return speed == toyota.speed;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(speed);
     }
 
     @Override
