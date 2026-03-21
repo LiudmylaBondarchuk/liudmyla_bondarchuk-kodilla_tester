@@ -9,6 +9,8 @@ public class School {
     private final List<Integer> studentsInClasses;
 
     public School(String name, List<Integer> studentsInClasses) {
+        Objects.requireNonNull(name, "name must not be null");
+        Objects.requireNonNull(studentsInClasses, "studentsInClasses must not be null");
         this.name = name;
         this.studentsInClasses = new ArrayList<>(studentsInClasses);
     }

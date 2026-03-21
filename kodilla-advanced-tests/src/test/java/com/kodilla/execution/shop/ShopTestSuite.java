@@ -18,7 +18,7 @@ class ShopTestSuite {
     Order order4 = new Order(new BigDecimal("300.0"), LocalDate.of(2023, 5, 10), "ola456");
 
     @BeforeEach
-    public void init() {
+    void init() {
         shop.addOrder(order1);
         shop.addOrder(order2);
         shop.addOrder(order3);
@@ -26,22 +26,23 @@ class ShopTestSuite {
     }
 
     @AfterEach
-    public void reset() {
+    void reset() {
         shop.clear();
     }
 
     @BeforeAll
-    public static void beforeAll() {
+    static void beforeAll() {
         System.out.println(">>> Starting Shop tests...");
     }
 
     @AfterAll
-    public static void afterAll() {
+    static void afterAll() {
         System.out.println(">>> Finished Shop tests.");
     }
 
     @Test
-    public void shouldAddOrdersToShop() {
+    @DisplayName("should add orders to shop")
+    void shouldAddOrdersToShop() {
         //When
         int numberOfOrders = shop.getNumberOfOrders();
 
@@ -50,7 +51,8 @@ class ShopTestSuite {
     }
 
     @Test
-    public void shouldNotAddDuplicateOrders() {
+    @DisplayName("should not add duplicate orders")
+    void shouldNotAddDuplicateOrders() {
         //When
         shop.addOrder(order1);
 
@@ -59,7 +61,8 @@ class ShopTestSuite {
     }
 
     @Test
-    public void shouldReturnOrdersFromDateRange() {
+    @DisplayName("should return orders from date range")
+    void shouldReturnOrdersFromDateRange() {
         //When
         List<Order> result = shop.getOrdersBetweenDates(
                 LocalDate.of(2023, 5, 1),
@@ -72,7 +75,8 @@ class ShopTestSuite {
     }
 
     @Test
-    public void shouldReturnOrdersFromValueRange() {
+    @DisplayName("should return orders from value range")
+    void shouldReturnOrdersFromValueRange() {
         //When
         List<Order> result = shop.getOrdersByValueRange(new BigDecimal("200.0"), new BigDecimal("400.0"));
 
@@ -83,7 +87,8 @@ class ShopTestSuite {
     }
 
     @Test
-    public void shouldReturnEmptyListWhenNoOrdersInDateRange() {
+    @DisplayName("should return empty list when no orders in date range")
+    void shouldReturnEmptyListWhenNoOrdersInDateRange() {
         //When
         List<Order> result = shop.getOrdersBetweenDates(
                 LocalDate.of(2022, 1, 1),
@@ -94,7 +99,8 @@ class ShopTestSuite {
     }
 
     @Test
-    public void shouldReturnEmptyListWhenNoOrdersInValueRange() {
+    @DisplayName("should return empty list when no orders in value range")
+    void shouldReturnEmptyListWhenNoOrdersInValueRange() {
         //When
         List<Order> result = shop.getOrdersByValueRange(new BigDecimal("1000.0"), new BigDecimal("2000.0"));
 
@@ -103,7 +109,8 @@ class ShopTestSuite {
     }
 
     @Test
-    public void shouldSumAllOrdersValues() {
+    @DisplayName("should sum all orders values")
+    void shouldSumAllOrdersValues() {
         //When
         BigDecimal sum = shop.getTotalValue();
 
