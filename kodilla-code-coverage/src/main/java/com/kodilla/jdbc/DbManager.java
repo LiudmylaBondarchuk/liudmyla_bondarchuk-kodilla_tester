@@ -6,15 +6,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class DbManager implements AutoCloseable {
 
     private static final String PROPERTIES_FILE = "db.properties";
-    private static final String DEFAULT_USER = "kodilla";
-    private static final String DEFAULT_PASSWORD = "kodilla";
-    private static final String DEFAULT_URL =
-            "jdbc:mysql://localhost:3306/kodilla_tester"
-                    + "?serverTimezone=Europe/Warsaw&useSSL=False";
+    private static final Pattern ENV_VAR_PATTERN = Pattern.compile("^\\$\\{([^:}]+)(?::(.*))?}$");
 
     private final Connection conn;
     private static volatile DbManager dbManagerInstance;
@@ -25,12 +23,14 @@ public class DbManager implements AutoCloseable {
         Properties connectionProps = new Properties();
         connectionProps.put("user",
                 System.getProperty("db.user",
-                        fileProps.getProperty("db.user", DEFAULT_USER)));
+                        resolveProperty(fileProps.getProperty("db.user", "kodilla"))));
         connectionProps.put("password",
                 System.getProperty("db.password",
-                        fileProps.getProperty("db.password", DEFAULT_PASSWORD)));
+                        resolveProperty(fileProps.getProperty("db.password", ""))));
         String url = System.getProperty("db.url",
-                fileProps.getProperty("db.url", DEFAULT_URL));
+                resolveProperty(fileProps.getProperty("db.url",
+                        "jdbc:mysql://localhost:3306/kodilla_course"
+                                + "?serverTimezone=Europe/Warsaw&useSSL=False")));
         conn = DriverManager.getConnection(url, connectionProps);
     }
 
@@ -45,6 +45,20 @@ public class DbManager implements AutoCloseable {
             // fallback to hardcoded defaults
         }
         return props;
+    }
+
+    static String resolveProperty(String value) {
+        if (value == null) {
+            return null;
+        }
+        Matcher matcher = ENV_VAR_PATTERN.matcher(value);
+        if (!matcher.matches()) {
+            return value;
+        }
+        String envVar = matcher.group(1);
+        String defaultValue = matcher.group(2) != null ? matcher.group(2) : "";
+        String envValue = System.getenv(envVar);
+        return envValue != null ? envValue : defaultValue;
     }
 
     public static DbManager getInstance() throws SQLException {
